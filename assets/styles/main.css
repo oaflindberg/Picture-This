@@ -57,9 +57,9 @@ nav ul {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 32vh;
+    height: 40vh;
     border-radius: 6px;
-    width: 30vw;
+    width: 80vw;
     background: rgba(0, 0, 0, 0.5);
     color: white;
 }
@@ -71,7 +71,7 @@ nav ul {
 }
 
 .input {
-    width: 25vw;
+    width: 70vw;
     height: 5vh;
     border: 2px solid #222222;
     border-radius: 6px;
@@ -87,9 +87,26 @@ button {
     width: 100px;
     height: 30px;
     margin-left: 10px;
-    background: #222222;
-    color: white;
+    background: white;
+    color: #222222;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: 250ms ease;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .login {
+        height: 32vh;
+        width: 30vw;
+    }
+
+    .input {
+        width: 25vw;
+        height: 5vh;
+    }
 }
