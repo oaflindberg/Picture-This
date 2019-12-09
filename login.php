@@ -1,4 +1,4 @@
-<img class="background-image" src="assets/images/blue-orange.jpeg" alt="picture of a blue orange">
+<img class="background-image" src="assets/images/abstract-1.jpeg" alt="picture of a blue orange">
 
 <?php
 require __DIR__ . '/views/header.php';
