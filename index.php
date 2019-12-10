@@ -2,7 +2,18 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <article>
     <?php if (isset($_SESSION['user'])) : ?>
-        <h1>Hello <?php echo $_SESSION['user']['name']; ?></h1>
+        
+        <div class="content-wrapper">
+        <section class="content-feed">
+            <p>
+                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto laudantium delectus aliquam optio explicabo eius nostrum earum itaque illum adipisci eveniet temporibus similique voluptatem, tempore quas laborum, unde officiis dicta?</span>
+                <span>Ipsa, eum. Neque alias esse error, odio illo itaque debitis molestias repellat, nisi ipsam porro ullam quidem corporis sint? Nihil possimus necessitatibus autem fugiat atque officiis praesentium quasi ad harum.</span>
+                <span>Odio, similique quos ullam ipsa quia doloribus! Blanditiis doloribus, maxime vel nisi laborum quidem? Minima iste, cumque fuga, aut eveniet fugit hic sapiente voluptatum quasi velit nisi ex commodi rem!</span>
+                <span>Labore, vero ab at, aliquam commodi praesentium, voluptas dolores eum rem ullam debitis nulla consequuntur provident minima exercitationem quam asperiores aliquid velit officia odio culpa architecto explicabo eos? Nemo, est!</span>
+                <span>Vel rerum quos nulla eligendi cumque. Quos fuga adipisci officiis nemo, eos beatae error corrupti, maxime voluptatum doloribus vel dolor a. Accusantium ad aut ratione voluptatibus consectetur ipsum? Eveniet, a.</span>
+            </p>
+        </section>
+        </div>
 
         <?php else : ?>
             <div class="start-info-container">

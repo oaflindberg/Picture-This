@@ -7,6 +7,16 @@ declare(strict_types=1);
 <img class="background-image" src="assets/images/abstract-3.jpeg" alt="picture of a blue orange">
 <?php require __DIR__ . '/views/header.php'; ?>
 
+<?php if(isset($_SESSION['signup'])) : ?>
+    <div class="sign-up-container">
+        <article class="sign-up">
+            <h1><?php echo $_SESSION['signup']['message']; ?></h1>
+            <button><a href="login.php">Login</a></button>
+        </article>
+    </div>
+    <?php unset($_SESSION['signup']); ?>
+    <?php else :?>
+
 <div class="sign-up-container">
     <article class="sign-up">
         <h1>Sign up</h1>
@@ -14,26 +24,28 @@ declare(strict_types=1);
         <form action="app/users/signup.php" method="post">
             <div class="form-section">
                 <label for="firstname">Firstname</label>
-                <input class="input" type="text" name="firstname" placeholder="John" required>
+                <input class="input" type="text" id="firstname" name="firstname" placeholder="John" required>
             </div>
 
             <div class="form-section">
                 <label for="lastname">Lastname</label>
-                <input class="input" type="text" name="lastname" placeholder="Doe" required>
+                <input class="input" type="text" id="lastname" name="lastname" placeholder="Doe" required>
             </div>
             <div class="form-section">
                 <label for="email">Email</label>
-                <input class="input" type="email" name="email" placeholder="example@email.com" required>
+                <input class="input" type="email" id="email" name="email" placeholder="example@email.com" required>
             </div>
 
             <div class="form-section">
                 <label for="password">Password</label>
-                <input class="input" type="password" name="password" placeholder="*********" required>
+                <input class="input" type="password" id="password" name="password" placeholder="*********" required>
             </div>
             
             <button type="submit">Sign up</button>
         </form>
     </article>
 </div>
+
+    <?php endif; ?>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

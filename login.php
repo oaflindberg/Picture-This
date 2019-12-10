@@ -11,12 +11,12 @@ require __DIR__ . '/views/header.php';
         <form action="app/users/login.php" method="post">
             <div class="form-section">
                 <label for="email">Email</label>
-                <input class="input" type="email" name="email" placeholder="example@email.com" required>
+                <input class="input" type="email" id="email" name="email" placeholder="example@email.com" required>
             </div>
 
             <div class="form-section">
                 <label for="password">Password</label>
-                <input class="input" type="password" name="password" placeholder="*********" required>
+                <input class="input" type="password" id="password" name="password" placeholder="*********" required>
             </div>
 
             <button type="submit">Login</button>

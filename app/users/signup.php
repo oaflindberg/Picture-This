@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+$_SESSION['signup'] = [
+    'message' => 'You have succesfully created a Picture This-account!'
+];
+
+
 if (isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'])) {
     $firstname = trim(filter_var($_POST['firstname'], FILTER_SANITIZE_STRING));
     $lastname = trim(filter_var($_POST['lastname'], FILTER_SANITIZE_STRING));
@@ -11,9 +16,7 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['pass
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $query = $pdo->prepare('INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)');
-    if (!$query) {
-        die(var_dump($pdo->errorInfo()));
-    }
+
     $query->execute(
             [
                 ':firstname' => $firstname,
@@ -23,5 +26,5 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['pass
             ]
         );
 
-        redirect('/');
+        redirect('/signup.php');
 }
