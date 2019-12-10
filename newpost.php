@@ -4,10 +4,11 @@
     <?php if (isset($_SESSION['user'])) : ?>
         
             <div class="start-info-container">
-             <form action="app/posts/store.php" method="post">
+                <section class="sign-up">
+             <form class="form-section" action="app/posts/store.php" method="post">
              <label for="file">Choose file to upload</label>
                 <input type="file" name="file" id="file">
-                <label for="caption"></label>
+                <label for="caption">Caption</label>
                 <input type="text" name="caption" id="caption">
             </form>
                 </section>
