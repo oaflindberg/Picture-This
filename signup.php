@@ -1,4 +1,8 @@
+<?php 
 
+declare(strict_types=1);
+
+?>
 
 <img class="background-image" src="assets/images/abstract-3.jpeg" alt="picture of a blue orange">
 <?php require __DIR__ . '/views/header.php'; ?>
@@ -7,7 +11,7 @@
     <article class="sign-up">
         <h1>Sign up</h1>
 
-        <form action="app/users/login.php" method="post">
+        <form action="app/users/signup.php" method="post">
             <div class="form-section">
                 <label for="firstname">Firstname</label>
                 <input class="input" type="text" name="firstname" placeholder="John" required>
