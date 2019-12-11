@@ -55,10 +55,11 @@ declare(strict_types=1); ?>
     <div class="posts-container">
 
         <?php foreach ($posts as $post) : ?>
-            <div class="posts">
-                <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="h" height="150px" width="auto">
+            <div class="posts" data-id="<?php echo $post['id']; ?>">
+                <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="" height="150px" width="auto">
                 <p><?php echo $post['caption']; ?></p>
             </div>
+            </a>
         <?php endforeach; ?>
 
     </div>
