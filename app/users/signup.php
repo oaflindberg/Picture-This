@@ -34,25 +34,6 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['pass
                 ':password' => $password
             ]
         );
-
-        $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
-        $statement->execute(
-            [
-                ':email' => $email
-            ]
-        );
-
-        $users = $statement->fetch(PDO::FETCH_ASSOC);
-        $storedEmail = $users['email'];
-
-        if ($email === $storedEmail) {
-            $_SESSION['user'] = [
-                'id' => $users['id'],
-                'name' => $users['firstname'],
-                'email' => $users['email'],
-            ];
-
-            redirect('/');
-        }
+        logInWhenCreated($pdo, $email);
     }
 }

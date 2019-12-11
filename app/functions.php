@@ -15,4 +15,34 @@ if (!function_exists('redirect')) {
         header("Location: ${path}");
         exit;
     }
+
+    /**
+     * Function that gets the user logged in after account has been created
+     *
+     * @param [type] $pdo
+     * @param [type] $email
+     * @return void
+     */
+    function logInWhenCreated($pdo, $email)
+    {
+        $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+        $statement->execute(
+            [
+                ':email' => $email
+            ]
+        );
+
+        $users = $statement->fetch(PDO::FETCH_ASSOC);
+        $storedEmail = $users['email'];
+
+        if ($email === $storedEmail) {
+            $_SESSION['user'] = [
+                'id' => $users['id'],
+                'name' => $users['firstname'],
+                'email' => $users['email'],
+            ];
+
+            redirect('/');
+        }
+    }
 }
