@@ -14,7 +14,7 @@ declare(strict_types=1); ?>
 
     <section class="posts-wrapper">
 
-        <h1 class="posts-header">Posts by you</h1>
+        <h1 class="posts-header">Your posts</h1>
         <div class="posts-container">
 
             <?php foreach ($posts as $post) : ?>
@@ -45,7 +45,7 @@ declare(strict_types=1); ?>
         <h2>Change profile-picture</h2>
         <form class="form-section" action="/app/users/account.php" method="post">
             <label for="profilepicture">Profile picture</label>
-            <input class="account-input" type="file" name="profilepicture" id="profilepicture">
+            <input class="account-input avatar-input" type="file" name="profilepicture" id="profilepicture">
             <div class="btns-container">
                 <button class="account-btn" type="submit">Upload</button>
             </div>

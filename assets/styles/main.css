@@ -124,6 +124,9 @@ button:hover {
     margin: 10px 0;
 }
 
+.avatar-input {
+    padding-left: 0;
+}
 .biography-input {
     width: 70vw;
     border-radius: 6px;
@@ -241,6 +244,19 @@ button:hover {
     border-bottom: 2px solid white;
 }
 
+.posts img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    /* border-radius: 2px; */
+}
+
+.posts p {
+    width: 100px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
     .title {
         font-size: 32px;
@@ -284,5 +300,10 @@ button:hover {
 
     .posts {
         border: none;
+    }
+
+    .posts img {
+        height: 150px;
+        width: auto;
     }
 }
