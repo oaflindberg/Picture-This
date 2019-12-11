@@ -76,7 +76,7 @@ declare(strict_types=1); ?>
 
             <div class="btns-container">
                 <button class="account-btn" type="submit">Reset</button>
-                <button class="account-btn" class="logout"><a href="/app/users/logout.php">Log out</a></button>
+                <button class="account-btn" class="logout"><a href="/app/users/logout.php">Sign out</a></button>
             </div>
         </form>
     </section>

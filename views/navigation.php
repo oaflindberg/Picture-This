@@ -1,12 +1,12 @@
 <nav>
 
     <ul>
-       
+
         <?php
         if (isset($_SESSION['user'])) : ?>
-           <li>
-            <a href="/index.php">Home</a>
-        </li>
+            <li>
+                <a href="/index.php">Home</a>
+            </li>
             <li>
                 <a href="#">Search</a>
             </li>
@@ -21,12 +21,12 @@
         <?php else : ?>
 
             <li>
-            <a href="/index.php">Home</a>
-        </li>
-        <a class="title" href="#"><?php echo $config['title']; ?></a>
+                <a href="/index.php">Home</a>
+            </li>
+            <a class="title" href="#"><?php echo $config['title']; ?></a>
 
             <li>
-                <a href="/login.php">Login</a>
+                <a href="/login.php">Sign in</a>
             </li>
         <?php endif; ?>
 
