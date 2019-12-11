@@ -38,6 +38,18 @@ declare(strict_types=1); ?>
                 </form>
             </section>
         </div>
+        <div class="bio-change-container">
+            <section class="bio-change">
+                <h2>Change biography</h2>
+                <form class="form-section" action="/app/users/account.php" method="post">
+                    <label for="biography">Biography</label>
+                    <input type="text" name="biography" id="biography">
+                    <div class="btns-container">
+                        <button type="submit">Update</button>
+                    </div>
+                </form>
+            </section>
+        </div>
     </section>
 
 
