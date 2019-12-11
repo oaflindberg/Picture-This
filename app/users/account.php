@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../../views/header.php';
 
+
+/**
+ *  UPDATE PASSWORD
+ */
 if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm'])) {
     $oldPwd = $_POST['oldpassword'];
     $newPwd = $_POST['password'];
@@ -30,6 +34,9 @@ if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm']))
     }
 }
 
+/**
+ *  UPDATE EMAIL
+ */
 if (isset($_POST['oldemail'], $_POST['newemail'])) {
     $oldEmail = $_POST['oldemail'];
     $newEmail = $_POST['newemail'];
@@ -55,6 +62,9 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
     }
 }
 
+/**
+ *  UPDATE BIOGRAPHY
+ */
 if (isset($_POST['biography'])) {
     $biography = trim(filter_var($_POST['biography'], FILTER_SANITIZE_STRING));
 
@@ -75,4 +85,33 @@ if (isset($_POST['biography'])) {
     redirect('/account.php');
 } else {
     die(var_dump($pdo->errorInfo()));
+}
+
+/**
+ *  UPDATE AVATAR
+ */
+if (isset($_FILES['profilepicture'])) {
+
+    $avatar = $_FILES['profilepicture'];
+
+    $filename = 'avatar' . '-' . date('ymdsu') . '.png';
+
+    $destination = __DIR__ . '/../../uploads/avatar/' . $filename;
+
+    move_uploaded_file($image['tmp_name'], $destination);
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->execute([
+        'id' => $_SESSION['user']['id']
+    ]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+
+    $newAvatar = $pdo->prepare('UPDATE users SET avatar = :newavatar WHERE id = :id');
+    $newAvatar->execute([
+        ':newavatar' => $filename,
+    ]);
+} else {
+    die(var_dump($pdo->errorInfo()));
+    redirect('/');
 }
