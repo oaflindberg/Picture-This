@@ -32,3 +32,28 @@ if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm']))
         die(var_dump($pdo->errorInfo()));
     }
 }
+
+if (isset($_POST['oldemail'], $_POST['newemail'])) {
+    $oldEmail = $_POST['oldemail'];
+    $newEmail = $_POST['newemail'];
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->execute([
+        'id' => $_SESSION['user']['id']
+    ]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    $storedEmail = $user['email'];
+
+    if ($oldEmail === $storedEmail && $newEmail !== $storedEmail) {
+        $changeQuery = $pdo->prepare('UPDATE users SET email = :newemail WHERE id = :id');
+        $changeQuery->execute([
+            ':newemail' => $newEmail,
+            ':id' => $_SESSION['user']['id']
+        ]);
+
+        redirect('/app/users/logout.php');
+    } else {
+        die(var_dump($pdo->errorInfo()));
+    }
+}

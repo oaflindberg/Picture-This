@@ -24,9 +24,23 @@ declare(strict_types=1); ?>
                 <button class="logout"><a href="/app/users/logout.php">Log out</a></button>
             </div>
         </form>
+        <div class="email-change-container">
+            <section class="email-change">
+                <h2>Change email</h2>
+                <form class="form-section" action="/app/users/account.php" method="post">
+                    <label for="oldemail">Current email</label>
+                    <input type="email" name="oldemail" id="oldemail">
+                    <label for="email">New email</label>
+                    <input type="email" name="newemail" id="newemail">
+                    <div class="btns-container">
+                        <button type="submit">Reset</button>
+                    </div>
+                </form>
+            </section>
+        </div>
     </section>
-</div>
 
 
 
-<?php require __DIR__ . '/views/footer.php';
+
+    <?php require __DIR__ . '/views/footer.php';

@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
-require __DIR__.'/../autoload.php';
+require __DIR__ . '/../autoload.php';
 
 $_SESSION['signup'] = [
     'message' => 'You have succesfully created a Picture This-account!'
@@ -18,13 +18,33 @@ if (isset($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['pass
     $query = $pdo->prepare('INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)');
 
     $query->execute(
-            [
-                ':firstname' => $firstname,
-                ':lastname' => $lastname,
-                ':email' => $email,
-                ':password' => $password
-            ]
-        );
+        [
+            ':firstname' => $firstname,
+            ':lastname' => $lastname,
+            ':email' => $email,
+            ':password' => $password
+        ]
+    );
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+    $statement->execute(
+        [
+            ':email' => $email
+        ]
+    );
+
+    $users = $statement->fetch(PDO::FETCH_ASSOC);
+
+    $storedEmail = $users['email'];
+
+    if ($email === $storedEmail) {
+        $_SESSION['user'] = [
+            'id' => $users['id'],
+            'name' => $users['first_name'],
+            'email' => $users['email'],
+        ];
+        redirect('/');
 
         redirect('/signup.php');
+    }
 }

@@ -12,11 +12,19 @@ require __DIR__ . '/views/header.php';
             <div class="form-section">
                 <label for="email">Email</label>
                 <input class="input" type="email" id="email" name="email" placeholder="example@email.com" required>
+                <?php if (isset($_SESSION['wrongEmail'])) : ?>
+                    <p><?php echo $_SESSION['wrongEmail']['error']; ?></p>
+                    <?php unset($_SESSION['wrongEmail']) ?>
+                <?php endif; ?>
             </div>
 
             <div class="form-section">
                 <label for="password">Password</label>
                 <input class="input" type="password" id="password" name="password" placeholder="*********" required>
+                <?php if (isset($_SESSION['wrongPwd'])) : ?>
+                    <p><?php echo $_SESSION['wrongPwd']['error']; ?></p>
+                    <?php unset($_SESSION['wrongPwd']) ?>
+                <?php endif; ?>
             </div>
 
             <button type="submit">Login</button>
