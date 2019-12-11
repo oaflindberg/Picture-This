@@ -57,3 +57,25 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
         die(var_dump($pdo->errorInfo()));
     }
 }
+
+if (isset($_POST['biography'])) {
+    $biography = $_POST['biography'];
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->execute([
+        'id' => $_SESSION['user']['biography']
+    ]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    $storedEmail = $user['biography'];
+
+    $changeQuery = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
+    $changeQuery->execute([
+        ':biography' => $biography,
+        ':id' => $_SESSION['user']['id']
+    ]);
+
+    redirect('/account.php');
+} else {
+    die(var_dump($pdo->errorInfo()));
+}
