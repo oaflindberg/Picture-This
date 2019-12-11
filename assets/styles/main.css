@@ -112,6 +112,20 @@ button:hover {
     transform: scale(1.06);
 }
 
+.account-btn {
+    margin: 20px;
+    margin-left: 0;
+}
+
+.biography-input {
+    border-radius: 6px;
+}
+
+.account-input {
+    width: 60vw;
+    border-radius: 6px;
+}
+
 .test {
     height: 100vh;
 }
@@ -169,6 +183,16 @@ button:hover {
     padding-top: 10vh;
 }
 
+.posts-header,
+.account-settings-header {
+    color: white;
+    align-self: flex-start;
+}
+
+.account-settings-header {
+    margin-bottom: 20px;
+}
+
 .pwd-change,
 .email-change,
 .bio-change,
@@ -177,7 +201,25 @@ button:hover {
     color: white;
     width: 80vw;
     margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid white;
+}
+
+.posts-container {
+    border: none;
     border-radius: 6px;
+}
+
+.bio-change {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.pwd-change {
+    border: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-bottom: 20px;
 }
 
 .posts-container {
@@ -185,6 +227,7 @@ button:hover {
     flex-direction: row;
     flex-wrap: wrap;
     width: 80vw;
+    margin: 20px 0;
 }
 
 .posts {
@@ -204,6 +247,10 @@ button:hover {
 
     nav ul {
         font-size: 18px;
+    }
+
+    .account-input {
+        width: 20vw;
     }
 
     .login,
