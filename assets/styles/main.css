@@ -34,6 +34,7 @@ nav ul {
     align-items: center;
     padding: 20px;
     list-style-type: none;
+    font-size: 12px;
 }
 
 .background-image {
@@ -46,7 +47,7 @@ nav ul {
 
 .title {
     font-family: "Bebas Neue", cursive;
-    font-size: 32px;
+    font-size: 22px;
 }
 
 .login-container,
@@ -150,7 +151,8 @@ button:hover {
 }
 
 .content-feed {
-    width: 50vw;
+    width: 90vw;
+    border-radius: 6px;
     padding: 20px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
@@ -191,9 +193,19 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid white;
 }
 
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .title {
+        font-size: 32px;
+    }
+
+    nav ul {
+        font-size: 18px;
+    }
+
     .login,
     .sign-up {
         height: 32vh;
@@ -204,6 +216,10 @@ button:hover {
         height: 55vh;
     }
 
+    .content-feed {
+        width: 50vw;
+    }
+
     .input {
         width: 25vw;
         height: 5vh;
@@ -212,5 +228,9 @@ button:hover {
     .start-info {
         width: 40vw;
         height: 40vh;
+    }
+
+    .posts {
+        border: none;
     }
 }
