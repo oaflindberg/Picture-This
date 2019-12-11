@@ -2,21 +2,34 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/../autoload.php';
+require __DIR__ . '/../autoload.php';
 
 if (isset($_FILES['file'], $_POST['caption'])) {
 
-    $image = $_POST['file'];
+    $image = $_FILES['file'];
     $caption = trim(filter_var($_POST['caption'], FILTER_SANITIZE_STRING));
 
-    // file_put_contents()
+    $filename = 'Picture-This' . '-' . date('ymdsu');
+
+    $destination = __DIR__ . '/../../userposts/' . $filename;
+
+    move_uploaded_file($image['tmp_name'], $destination);
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->execute([
+        'id' => $_SESSION['user']['id']
+    ]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 
-    // $newPost = $pdo->prepare('INSERT INTO posts (image, caption) VALUES(:image, :caption)'); 
-    // $newPost->execute([
-    //     ':image' => $image,
-    //     ':caption' => $caption
-    // ]);
+    $newPost = $pdo->prepare('INSERT INTO posts (user_id, image, caption) VALUES(:id, :image, :caption)');
+    $newPost->execute([
+        ':id' => $user['id'],
+        ':image' => $filename,
+        ':caption' => $caption
+    ]);
+} else {
+    redirect('/newpost.php');
 }
 
 redirect('/');
