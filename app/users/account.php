@@ -1,30 +1,33 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types=1); ?>
+<?php
 
-require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../../views/header.php';
+// require __DIR__ . '/../autoload.php';
 
-if (isset($_POST["oldpassword"], $_POST["password"], $_POST["passwordrepeat"])) {
-    $oldPwd = password_hash($_POST["oldpassword"], PASSWORD_DEFAULT);
-    $newPwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $newPwdConfirm = password_hash($_POST["passwordconfirm"], PASSWORD_DEFAULT);
 
-    $statement = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm'])) {
+    $oldPwd = $_POST['oldpassword'];
+    $newPwd = $_POST['password'];
+    $newPwdConfirm = $_POST['passwordconfirm'];
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->execute([
-        "id" => $_SESSION["user"]["id"]
+        'id' => $_SESSION['user']['id']
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    $oldPwInfo = $user["password"];
+    $storedPwd = $user['password'];
 
-    if ($oldPwInfo === $oldPwd && $newPwd === $newPwdConfirm && $newPwd !== $oldPwd) {
-        $changeQuery = $pdo->prepare("UPDATE users SET password = :newpassword WHERE id = :id");
+    if (password_verify($oldPwd, $storedPwd) && $newPwd === $newPwdConfirm && $newPwd !== $oldPwd) {
+        $changeQuery = $pdo->prepare('UPDATE users SET password = :newpassword WHERE id = :id');
         $changeQuery->execute([
-            ":newpassword" => $newPw,
-            ":id" => $_SESSION["user"]["id"]
+            ':newpassword' => password_hash($newPwd, PASSWORD_DEFAULT),
+            ':id' => $_SESSION['user']['id']
         ]);
 
-        redirect("/logout.php");
+        redirect('/app/users/logout.php');
     } else {
         die(var_dump($pdo->errorInfo()));
     }

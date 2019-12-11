@@ -8,7 +8,7 @@
             <a href="/index.php">Home</a>
         </li>
             <li>
-                <a href="/app/users/logout.php">Search</a>
+                <a href="#">Search</a>
             </li>
 
             <a class="title" href="#"><?php echo $config['title']; ?></a>
@@ -16,7 +16,7 @@
                 <a href="/newpost.php">New Post</a>
             </li>
             <li>
-                <a class="logout" href="/app/users/logout.php">Logout</a>
+                <a href="/account.php">Account</a>
             </li>
         <?php else : ?>
 
