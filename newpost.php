@@ -18,6 +18,9 @@ declare(strict_types=1); ?>
             </section>
         </div>
 
+    <?php else : ?>
+        <?php redirect('/'); ?>
+
     <?php endif; ?>
 </article>
 

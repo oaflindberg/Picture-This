@@ -156,24 +156,41 @@ button:hover {
     color: white;
 }
 
-.pwd-change-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pwd-change {
+.account-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 40vh;
-    border-radius: 6px;
     width: 80vw;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 10vh;
+}
+
+.pwd-change,
+.email-change,
+.bio-change,
+.posts-container {
     background: rgba(0, 0, 0, 0.7);
     color: white;
+    width: 80vw;
+    margin: 0;
+    border-radius: 6px;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80vw;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
 }
 
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {

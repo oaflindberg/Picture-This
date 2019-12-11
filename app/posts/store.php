@@ -9,9 +9,9 @@ if (isset($_FILES['file'], $_POST['caption'])) {
     $image = $_FILES['file'];
     $caption = trim(filter_var($_POST['caption'], FILTER_SANITIZE_STRING));
 
-    $filename = 'Picture-This' . '-' . date('ymdsu');
+    $filename = 'Picture-This' . '-' . date('ymdsu') . '.png';
 
-    $destination = __DIR__ . '/../../userposts/' . $filename;
+    $destination = __DIR__ . '/../../uploads/posts/' . $filename;
 
     move_uploaded_file($image['tmp_name'], $destination);
 

@@ -1,11 +1,8 @@
 <?php
 
-declare(strict_types=1); ?>
-<?php
+declare(strict_types=1);
 
 require __DIR__ . '/../../views/header.php';
-// require __DIR__ . '/../autoload.php';
-
 
 if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm'])) {
     $oldPwd = $_POST['oldpassword'];
@@ -14,7 +11,7 @@ if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm']))
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->execute([
-        'id' => $_SESSION['user']['id']
+        ':id' => $_SESSION['user']['id']
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -39,7 +36,7 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->execute([
-        'id' => $_SESSION['user']['id']
+        ':id' => $_SESSION['user']['id']
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -59,15 +56,15 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
 }
 
 if (isset($_POST['biography'])) {
-    $biography = $_POST['biography'];
+    $biography = trim(filter_var($_POST['biography'], FILTER_SANITIZE_STRING));
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->execute([
-        'id' => $_SESSION['user']['biography']
+        ':id' => $_SESSION['user']['id']
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    $storedEmail = $user['biography'];
+    $storedBiography = $user['biography'];
 
     $changeQuery = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
     $changeQuery->execute([
