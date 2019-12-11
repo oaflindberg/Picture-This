@@ -30,7 +30,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     if (password_verify($password, $userPwd)) {
         $_SESSION['user'] = [
             'id' => $users['id'],
-            'name' => $users['first_name'],
+            'name' => $users['firstname'],
             'email' => $users['email'],
         ];
         redirect('/');
