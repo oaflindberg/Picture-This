@@ -12,7 +12,8 @@ declare(strict_types=1); ?>
                     <label for="file">Choose file to upload</label>
                     <input type="file" name="file" id="file" required>
                     <label for="caption">Caption</label>
-                    <input type="text" name="caption" id="caption">
+                    <!-- <input type="text" name="caption" id="caption"> -->
+                    <textarea class="textarea" name="caption" id="caption" cols="30" rows="10"></textarea>
                     <button type="submit">Upload</button>
                 </form>
             </section>

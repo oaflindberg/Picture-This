@@ -20,7 +20,7 @@ declare(strict_types=1); ?>
             <?php foreach ($posts as $post) : ?>
                 <a href="editpost.php?id=<?php echo $post['id']; ?>">
                     <div class="posts" data-id="<?php echo $post['id']; ?>">
-                        <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="" height="150px" width="auto">
+                        <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
                         <p><?php echo $post['caption']; ?></p>
                     </div>
                 </a>
@@ -36,7 +36,8 @@ declare(strict_types=1); ?>
         <h2>Change biography</h2>
         <form class="form-section" action="/app/users/account.php" method="post">
             <label for="biography">Biography</label>
-            <input class="biography-input account-input" type="text" name="biography" id="biography" value="<?php echo $biography["biography"]; ?>">
+            <!-- <input type="text" name="biography" id="biography" value="<?php echo $biography["biography"]; ?>"> -->
+            <textarea class="textarea biography-input account-input" name="biography" id="biography" cols="30" rows="10"><?php echo $biography["biography"]; ?></textarea>
             <div class="btns-container">
                 <button class="account-btn" type="submit">Update</button>
             </div>
