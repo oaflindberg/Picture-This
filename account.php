@@ -18,18 +18,16 @@ declare(strict_types=1); ?>
         <div class="posts-container">
 
             <?php foreach ($posts as $post) : ?>
-                <a href="editpost.php?id=<?php echo $post['id']; ?>">
-                    <div class="posts" data-id="<?php echo $post['id']; ?>">
+                <div class="posts" data-id="<?php echo $post['id']; ?>">
+                    <a href="editpost.php?id=<?php echo $post['id']; ?>">
                         <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
-                        <p><?php echo $post['caption']; ?></p>
-                    </div>
-                </a>
+                    </a>
+                    <p><?php echo $post['caption']; ?></p>
+                </div>
             <?php endforeach; ?>
 
         </div>
     </section>
-
-
 
     <h1 class="account-settings-header">Account settings</h1>
     <section class="bio-change">
