@@ -18,10 +18,11 @@ declare(strict_types=1); ?>
         <div class="posts-container">
 
             <?php foreach ($posts as $post) : ?>
-                <div class="posts" data-id="<?php echo $post['id']; ?>">
-                    <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="" height="150px" width="auto">
-                    <p><?php echo $post['caption']; ?></p>
-                </div>
+                <a href="editpost.php?id=<?php echo $post['id']; ?>">
+                    <div class="posts" data-id="<?php echo $post['id']; ?>">
+                        <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="" height="150px" width="auto">
+                        <p><?php echo $post['caption']; ?></p>
+                    </div>
                 </a>
             <?php endforeach; ?>
 

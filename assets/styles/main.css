@@ -234,6 +234,25 @@ button:hover {
     margin: 20px 0;
 }
 
+.edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    width: 80vw;
+    height: 50vh;
+    margin: 0 auto;
+}
+
+.test {
+    /* padding-top: 10vh; */
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
 .posts {
     display: flex;
     flex-direction: column;
