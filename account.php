@@ -43,7 +43,7 @@ declare(strict_types=1); ?>
     </section>
     <section class="avatar-change">
         <h2>Change profile-picture</h2>
-        <form class="form-section" action="/app/users/account.php" method="post">
+        <form class="form-section" action="/app/users/account.php" method="post" enctype="multipart/form-data">
             <label for="profilepicture">Profile picture</label>
             <input class="account-input avatar-input" type="file" name="profilepicture" id="profilepicture">
             <div class="btns-container">

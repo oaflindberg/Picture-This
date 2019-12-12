@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../../views/header.php';
+require __DIR__ . '/../autoload.php';
 
 
 /**
@@ -29,8 +29,6 @@ if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm']))
         ]);
 
         redirect('/app/users/logout.php');
-    } else {
-        die(var_dump($pdo->errorInfo()));
     }
 }
 
@@ -57,8 +55,6 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
         ]);
 
         redirect('/app/users/logout.php');
-    } else {
-        die(var_dump($pdo->errorInfo()));
     }
 }
 
@@ -83,8 +79,6 @@ if (isset($_POST['biography'])) {
     ]);
 
     redirect('/account.php');
-} else {
-    die(var_dump($pdo->errorInfo()));
 }
 
 /**
@@ -98,20 +92,19 @@ if (isset($_FILES['profilepicture'])) {
 
     $destination = __DIR__ . '/../../uploads/avatar/' . $filename;
 
-    move_uploaded_file($image['tmp_name'], $destination);
+    move_uploaded_file($avatar['tmp_name'], $destination);
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->execute([
-        'id' => $_SESSION['user']['id']
+        ':id' => $_SESSION['user']['id']
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 
     $newAvatar = $pdo->prepare('UPDATE users SET avatar = :newavatar WHERE id = :id');
     $newAvatar->execute([
+        ':id' => $_SESSION['user']['id'],
         ':newavatar' => $filename,
     ]);
-} else {
-    die(var_dump($pdo->errorInfo()));
-    redirect('/');
+    redirect('/account.php');
 }
