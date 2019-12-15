@@ -4,6 +4,11 @@ declare(strict_types=1); ?>
 <img class="background-image" src="assets/images/abstract-2.jpeg" alt="picture of a blue orange">
 <?php require __DIR__ . '/views/header.php'; ?>
 
+
+<?php if (!isset($_SESSION['user'])) {
+    redirect('/');
+} ?>
+
 <?php
 
 $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id AND id = :postid');
@@ -28,6 +33,10 @@ $post = $statement->fetch(PDO::FETCH_ASSOC);
             <button type="submit">Delete</button>
         </form>
     </section>
+
+    <?php die(var_dump($_SESSION['user']['id'])); ?>
+    <?php die(var_dump($_GET['id'])); ?>
+
 
 
 </div>

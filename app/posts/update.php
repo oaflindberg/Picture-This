@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+if (isset($_POST['editcaption'])) {
 
-if (isset($_POST['editcaption'], $_GET)) {
+    // TODO: FIX ID THINGY, THIS SHIT DOES NOT WORK
 
     $editcaption = trim(filter_var($_POST['editcaption'], FILTER_SANITIZE_STRING));
 
     $statement = $pdo->prepare('UPDATE posts SET caption = :editcaption WHERE id = :id');
-
     $statement->execute([
-        ':editcaption' => "$editcaption",
+        ':editcaption' => $editcaption,
         ':id' => $_GET['id']
     ]);
-    // die(var_dump($statement));
+    die(var_dump($pdo->errorInfo()));
     redirect('/account.php');
 }
-// die(var_dump($pdo->errorInfo()));
 
 redirect('/');
