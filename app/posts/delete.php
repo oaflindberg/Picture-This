@@ -2,8 +2,17 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/../autoload.php';
+require __DIR__ . '/../autoload.php';
 
-// In this file we delete new posts in the database.
+if (isset($_POST)) {
+
+    $changeQuery = $pdo->prepare('DELETE from posts WHERE id = :id');
+
+    $changeQuery->execute([
+        ':id' => $_GET['id']
+    ]);
+
+    redirect('/account.php');
+}
 
 redirect('/');

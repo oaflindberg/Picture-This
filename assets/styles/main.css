@@ -249,10 +249,10 @@ button:hover {
 
 .textarea {
     resize: none;
+    font-size: 14px;
 }
 
 .test {
-    /* padding-top: 10vh; */
     display: flex;
     align-items: center;
     height: 100vh;
