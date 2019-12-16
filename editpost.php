@@ -23,13 +23,12 @@ $post = $statement->fetch(PDO::FETCH_ASSOC);
 <div class="test">
     <section class="edit-container">
         <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="" height="150px" width="auto">
-        <form action="/app/posts/update.php" method="post">
-            <!-- <textarea class="textarea account-input" name="editcaption" id="editcaption" cols="30" rows="10"><?php echo $post['caption']; ?></textarea> -->
-            <input type="text" name="editcaption" id="editcaption" value="<?php echo $post['caption']; ?>">
+        <form action="/app/posts/update.php?id=<?php echo $_GET['id']; ?>" method="post">
+            <textarea class="textarea account-input" name="editcaption" id="editcaption" cols="30" rows="5"><?php echo $post['caption']; ?></textarea>
             <button type="submit">Update</button>
         </form>
         <h1>Delete Post?</h1>
-        <form action="/app/posts/delete.php" method="post">
+        <form action="/app/posts/delete.php?id=<?php echo $_GET['id']; ?>" method="post">
             <button type="submit">Delete</button>
         </form>
     </section>

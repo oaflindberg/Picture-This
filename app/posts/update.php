@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+
 if (isset($_POST['editcaption'])) {
 
     // TODO: FIX ID THINGY, THIS SHIT DOES NOT WORK
@@ -15,7 +16,11 @@ if (isset($_POST['editcaption'])) {
         ':editcaption' => $editcaption,
         ':id' => $_GET['id']
     ]);
-    die(var_dump($pdo->errorInfo()));
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
     redirect('/account.php');
 }
 
