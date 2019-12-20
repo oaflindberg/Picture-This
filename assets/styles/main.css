@@ -178,6 +178,12 @@ h1 {
     color: white;
 }
 
+.avatar-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
 .account-container {
     display: flex;
     justify-content: center;
@@ -189,14 +195,25 @@ h1 {
     padding-top: 10vh;
 }
 
-.posts-header,
+.posts-header {
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    height: auto;
+}
+
+.posts-h1 {
+    margin-left: 20px;
+}
+
+.posts-h1,
 .account-settings-header {
     color: white;
-    align-self: flex-start;
     text-decoration: underline;
 }
 
 .account-settings-header {
+    align-self: flex-start;
     margin-bottom: 20px;
 }
 

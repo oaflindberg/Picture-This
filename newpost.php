@@ -13,7 +13,7 @@ declare(strict_types=1); ?>
                     <input type="file" name="file" id="file" required>
                     <label for="caption">Caption</label>
                     <!-- <input type="text" name="caption" id="caption"> -->
-                    <textarea class="textarea" name="caption" id="caption" cols="30" rows="10"></textarea>
+                    <textarea class="textarea" name="caption" id="caption" cols="30" rows="5"></textarea>
                     <button type="submit">Upload</button>
                 </form>
             </section>

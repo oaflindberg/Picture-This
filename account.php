@@ -15,8 +15,11 @@ declare(strict_types=1); ?>
 
     <section class="posts-wrapper">
 
-        <img src="/uploads/avatar/<?php echo $avatar; ?>" alt="avatar">
-        <h1 class="posts-header">Your posts</h1>
+        <div class="posts-header">
+            <img class="avatar-img" src="/uploads/avatar/<?php echo $_SESSION['user']['avatar']; ?>" alt="avatar">
+            <h1 class="posts-h1">Your posts</h1>
+        </div>
+
         <div class="posts-container">
 
             <?php foreach ($posts as $post) : ?>

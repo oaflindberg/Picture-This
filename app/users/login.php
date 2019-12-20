@@ -32,6 +32,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             'id' => $users['id'],
             'name' => $users['firstname'],
             'email' => $users['email'],
+            'avatar' => $users['avatar'],
         ];
         redirect('/');
     } else {
