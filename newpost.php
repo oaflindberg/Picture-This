@@ -8,11 +8,18 @@ declare(strict_types=1); ?>
 
         <div class="start-info-container">
             <section class="sign-up">
+                <?php if (isset($_SESSION['errors'])) : ?>
+                    <p>
+                        <?php
+                        echo $_SESSION['errors'];
+                        unset($_SESSION['errors']);
+                        ?>
+                    </p>
+                <?php endif; ?>
                 <form class="form-section" action="app/posts/store.php" method="post" enctype="multipart/form-data">
                     <label for="file">Choose file to upload</label>
-                    <input type="file" name="file" id="file" required>
+                    <input type="file" name="file" id="file" accept="image/jpg, image/png" required>
                     <label for="caption">Caption</label>
-                    <!-- <input type="text" name="caption" id="caption"> -->
                     <textarea class="textarea" name="caption" id="caption" cols="30" rows="5"></textarea>
                     <button type="submit">Upload</button>
                 </form>
@@ -21,7 +28,6 @@ declare(strict_types=1); ?>
 
     <?php else : ?>
         <?php redirect('/'); ?>
-
     <?php endif; ?>
 </article>
 

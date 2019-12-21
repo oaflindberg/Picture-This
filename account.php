@@ -12,11 +12,10 @@ declare(strict_types=1); ?>
 
 <div class="account-container">
 
-
     <section class="posts-wrapper">
 
         <div class="posts-header">
-            <img class="avatar-img" src="/uploads/avatar/<?php echo $_SESSION['user']['avatar']; ?>" alt="avatar">
+            <img class="avatar-img" src="/uploads/avatar/<?php echo $avatar['avatar']; ?>" alt="avatar">
             <h1 class="posts-h1">Your posts</h1>
         </div>
 
@@ -49,7 +48,7 @@ declare(strict_types=1); ?>
         <h2>Change profile-picture</h2>
         <form class="form-section" action="/app/users/account.php" method="post" enctype="multipart/form-data">
             <label for="profilepicture">Profile picture</label>
-            <input class="account-input avatar-input" type="file" name="profilepicture" id="profilepicture">
+            <input class="account-input avatar-input" type="file" accept="image/jpg, image/png" name="profilepicture" id="profilepicture">
             <div class="btns-container">
                 <button class="account-btn" type="submit">Upload</button>
             </div>
@@ -85,8 +84,5 @@ declare(strict_types=1); ?>
         </form>
     </section>
 </div>
-
-
-
 
 <?php require __DIR__ . '/views/footer.php';

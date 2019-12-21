@@ -5,6 +5,10 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (isset($_FILES['file'], $_POST['caption'])) {
+    if ($_FILES['file'] > 4000000) {
+        $_SESSION['errors'] = 'The file is too big. Please choose a file that is smaller than 4MB.';
+        redirect('/newpost.php');
+    }
 
     $image = $_FILES['file'];
     $caption = trim(filter_var($_POST['caption'], FILTER_SANITIZE_STRING));
@@ -28,6 +32,11 @@ if (isset($_FILES['file'], $_POST['caption'])) {
         ':image' => $filename,
         ':caption' => $caption
     ]);
+
+    if ($_FILES['file'] > 4000000) {
+        $_SESSION['errors'] = 'The file is too big. Please choose a file that is smaller than 4MB.';
+        redirect('/newpost.php');
+    }
 } else {
     redirect('/newpost.php');
 }
