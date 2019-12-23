@@ -106,8 +106,20 @@ nav ul {
     border-radius: 6px;
 }
 
+.icons {
+    width: 20px;
+    height: 20px;
+}
+
+.no-style-plz {
+    background: none;
+    width: 20px;
+    margin: 5px;
+}
+
 .poster-name-in-feed {
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .post-caption-in-feed {
@@ -374,15 +386,7 @@ h1 {
         width: auto;
     }
 
-    /* .posts-in-feed {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    } */
-
     .post-in-feed {
-        margin-left: 11.5%;
         width: 30vw;
     }
 }

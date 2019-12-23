@@ -11,6 +11,12 @@
                 <?php foreach ($posts as $post) : ?>
                     <div class="posts-in-feed" data-id="<?php echo $post['id']; ?>">
                         <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
+                        
+                        <form action="/app/posts/reaction.php" methor="post">
+                            <button class="no-style-plz" type="submit"><img class="icons" src="/assets/icons/heart.svg" alt=""></button>
+                            <img class="icons" src="/assets/icons/comment.svg" alt="">
+                        </form>
+
                         <p class="poster-name-in-feed"><?php echo $post['firstname'] . ' ' . $post['lastname']; ?></p>
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
                     </div>
