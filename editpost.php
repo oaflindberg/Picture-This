@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1); ?>
-<img class="background-image" src="assets/images/abstract-2.jpeg" alt="picture of a blue orange">
+<img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
 <?php require __DIR__ . '/views/header.php'; ?>
 
 
@@ -21,14 +21,15 @@ if (!$statement) {
     die(var_dump($pdo->errorInfo()));
 }
 
-$post = $statement->fetch(PDO::FETCH_ASSOC);;
+$editPosts = $statement->fetch(PDO::FETCH_ASSOC);;
 ?>
 
+<!-- TODO: FIX IMAGES AND CAPTIONS NOT SHOWING UP AFTER INNER JOIN IN APP/POSTS/SHOW.PHP -->
 <div class="test">
     <section class="edit-container">
-        <img src="/uploads/posts/<?php echo $post['image']; ?>" alt="" height="150px" width="auto">
+        <img src="/uploads/posts/<?php echo $editPosts['image']; ?>" alt="" height="150px" width="auto">
         <form action="/app/posts/update.php?id=<?php echo $_GET['id']; ?>" method="post">
-            <textarea class="textarea account-input" name="editcaption" id="editcaption" cols="30" rows="5"><?php echo $post['caption']; ?></textarea>
+            <textarea class="textarea account-input" name="editcaption" id="editcaption" cols="30" rows="5"><?php echo $editPosts['caption']; ?></textarea>
             <button type="submit">Update</button>
         </form>
         <h1>Delete Post?</h1>

@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1); ?>
-<img class="background-image" src="assets/images/abstract-2.jpeg" alt="picture of a blue orange">
+<img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
 <?php require __DIR__ . '/views/header.php'; ?>
 <article>
     <?php if (isset($_SESSION['user'])) : ?>

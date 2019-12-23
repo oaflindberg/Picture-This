@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 ?>
 
-<img class="background-image" src="assets/images/abstract-3.jpeg" alt="picture of a blue orange">
+<img class="background-image" src="assets/images/abstract-3.jpeg" alt="abstract image">
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <?php if (isset($_SESSION['signup'])) : ?>

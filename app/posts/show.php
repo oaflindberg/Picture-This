@@ -9,6 +9,13 @@ $statement->execute([
 
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id');
+$statement->execute([
+    ':id' => $_SESSION['user']['id']
+]);
+
+$editPosts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 
 $getBio = $pdo->prepare('SELECT biography FROM users WHERE id = :id');
 $getBio->execute([
