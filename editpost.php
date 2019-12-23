@@ -17,7 +17,11 @@ $statement->execute([
     ':postid' => $_GET['id']
 ]);
 
-$post = $statement->fetch(PDO::FETCH_ASSOC);
+if (!$statement) {
+    die(var_dump($pdo->errorInfo()));
+}
+
+$post = $statement->fetch(PDO::FETCH_ASSOC);;
 ?>
 
 <div class="test">
@@ -32,10 +36,4 @@ $post = $statement->fetch(PDO::FETCH_ASSOC);
             <button type="submit">Delete</button>
         </form>
     </section>
-
-    <?php die(var_dump($_SESSION['user']['id'])); ?>
-    <?php die(var_dump($_GET['id'])); ?>
-
-
-
 </div>

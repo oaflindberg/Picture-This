@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id');
+$statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id');
 $statement->execute([
     ':id' => $_SESSION['user']['id']
 ]);

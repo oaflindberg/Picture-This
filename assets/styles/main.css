@@ -95,6 +95,27 @@ nav ul {
     outline: none;
 }
 
+/* FEED */
+
+.posts-in-feed {
+    width: 80vw;
+}
+
+.post-in-feed {
+    width: 80vw;
+    border-radius: 6px;
+}
+
+.poster-name-in-feed {
+    font-size: 14px;
+}
+
+.post-caption-in-feed {
+    margin: 20px 0;
+}
+
+/* FEED ENDS */
+
 button {
     width: 100px;
     height: 30px;
@@ -198,7 +219,6 @@ h1 {
 .posts-header {
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
     height: auto;
 }
 
@@ -342,6 +362,7 @@ h1 {
     .start-info {
         width: 40vw;
         height: 40vh;
+        text-align: center;
     }
 
     .posts {
@@ -351,5 +372,17 @@ h1 {
     .posts img {
         height: 150px;
         width: auto;
+    }
+
+    /* .posts-in-feed {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    } */
+
+    .post-in-feed {
+        margin-left: 11.5%;
+        width: 30vw;
     }
 }
