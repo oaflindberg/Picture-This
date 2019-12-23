@@ -24,7 +24,6 @@ if (!$statement) {
 $editPosts = $statement->fetch(PDO::FETCH_ASSOC);;
 ?>
 
-<!-- TODO: FIX IMAGES AND CAPTIONS NOT SHOWING UP AFTER INNER JOIN IN APP/POSTS/SHOW.PHP -->
 <div class="test">
     <section class="edit-container">
         <img src="/uploads/posts/<?php echo $editPosts['image']; ?>" alt="" height="150px" width="auto">
