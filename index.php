@@ -11,8 +11,8 @@
                 <?php foreach ($posts as $post) : ?>
                     <div class="posts-in-feed" data-id="<?php echo $post['id']; ?>">
                         <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
-                        
-                        <form action="/app/posts/reaction.php" methor="post">
+
+                        <form action="/app/posts/reactions.php" method="post">
                             <button class="no-style-plz" type="submit"><img class="icons" src="/assets/icons/heart.svg" alt=""></button>
                             <img class="icons" src="/assets/icons/comment.svg" alt="">
                         </form>
