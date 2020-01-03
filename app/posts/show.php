@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$statement = $pdo->prepare('SELECT image, caption, posts.id, firstname, lastname FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id');
+$statement = $pdo->prepare('SELECT image, caption, posts.id, firstname, lastname FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id ORDER BY posts.id DESC');
 $statement->execute([
     ':id' => $_SESSION['user']['id']
 ]);

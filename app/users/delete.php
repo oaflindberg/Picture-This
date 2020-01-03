@@ -5,6 +5,16 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (isset($_POST)) {
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->execute([
+        ':id' => $_SESSION['user']['id']
+    ]);
+    $userInfo = $statement->fetch(PDO::FETCH_ASSOC);
+    $userAvatar = $userInfo['avatar'];
+    $fullPath = __DIR__ . "/../../uploads/avatars/$userAvatar";
+    unlink($fullPath);
+
     $statement = $pdo->prepare('DELETE FROM users WHERE id = :id');
     $statement->execute([
         ':id' => $_SESSION['user']['id']

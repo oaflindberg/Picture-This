@@ -79,16 +79,18 @@ declare(strict_types=1); ?>
 
             <div class="btns-container">
                 <button class="account-btn" type="submit">Reset</button>
-                <button class="account-btn" class="logout"><a href="/app/users/logout.php">Sign out</a></button>
+                <button class="account-btn logout"><a href="/app/users/logout.php">Sign out</a></button>
             </div>
         </form>
     </section>
     <section class="delete-account">
         <form class="form-section" action="/app/users/delete.php" method="post">
-            <h1>Delete account?</h1>
-            <button class="account-btn" type="submit">Yes</button>
+            <h2>Delete account?</h2>
+            <button class="account-btn delete-btn" type="submit">Yes</button>
         </form>
     </section>
 </div>
+
+<script src="/assets/scripts/confirm.js"></script>
 
 <?php require __DIR__ . '/views/footer.php';
