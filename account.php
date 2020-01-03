@@ -83,6 +83,12 @@ declare(strict_types=1); ?>
             </div>
         </form>
     </section>
+    <section class="delete-account">
+        <form class="form-section" action="/app/users/delete.php" method="post">
+            <h1>Delete account?</h1>
+            <button class="account-btn" type="submit">Yes</button>
+        </form>
+    </section>
 </div>
 
 <?php require __DIR__ . '/views/footer.php';
