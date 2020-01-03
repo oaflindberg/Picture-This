@@ -13,7 +13,8 @@
                         <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
 
                         <form action="/app/posts/reactions.php" method="post">
-                            <button class="no-style-plz" type="submit"><img class="icons" src="/assets/icons/heart.svg" alt=""></button>
+                            <input type="hidden" name="postid" value="<?php echo $post['id'] ?>">
+                            <button class="no-style-plz" name="like" type="submit"><img class="icons" src="/assets/icons/heart.svg" alt=""></button>
                             <img class="icons" src="/assets/icons/comment.svg" alt="">
                         </form>
 
