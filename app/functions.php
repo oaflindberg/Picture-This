@@ -23,19 +23,19 @@ if (!function_exists('redirect')) {
      * @param [type] $email
      * @return void
      */
-    function logInWhenCreated($pdo, $email)
+    function logInWhenCreated($pdo, $emailIsValid)
     {
         $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
         $statement->execute(
             [
-                ':email' => $email
+                ':email' => $emailIsValid
             ]
         );
 
         $users = $statement->fetch(PDO::FETCH_ASSOC);
         $storedEmail = $users['email'];
 
-        if ($email === $storedEmail) {
+        if ($emailIsValid === $storedEmail) {
             $_SESSION['user'] = [
                 'id' => $users['id'],
                 'name' => $users['firstname'],

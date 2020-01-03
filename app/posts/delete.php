@@ -6,9 +6,9 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST)) {
 
-    $changeQuery = $pdo->prepare('DELETE from posts WHERE id = :id');
+    $deleteQuery = $pdo->prepare('DELETE from posts WHERE id = :id');
 
-    $changeQuery->execute([
+    $deleteQuery->execute([
         ':id' => $_GET['id']
     ]);
 
