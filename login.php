@@ -27,7 +27,7 @@ require __DIR__ . '/views/header.php';
                 <?php endif; ?>
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit">Sign in</button>
         </form>
     </article>
 </div>

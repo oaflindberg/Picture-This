@@ -45,7 +45,7 @@ declare(strict_types=1); ?>
         </form>
     </section>
     <section class="avatar-change">
-        <h2>Change profile-picture</h2>
+        <h2>Change profile picture</h2>
         <form class="form-section" action="/app/users/account.php" method="post" enctype="multipart/form-data">
             <label for="profilepicture">Profile picture</label>
             <input class="account-input avatar-input" type="file" accept="image/jpg, image/png" name="profilepicture" id="profilepicture">
@@ -62,7 +62,7 @@ declare(strict_types=1); ?>
             <label for="email">New email</label>
             <input class="account-input" type="email" name="newemail" id="newemail">
             <div class="btns-container">
-                <button class="account-btn" type="submit">Reset</button>
+                <button class="account-btn" type="submit">Change</button>
             </div>
         </form>
     </section>
@@ -78,7 +78,7 @@ declare(strict_types=1); ?>
             <input class="account-input" type="password" name="passwordconfirm" id="passwordconfirm">
 
             <div class="btns-container">
-                <button class="account-btn" type="submit">Reset</button>
+                <button class="account-btn" type="submit">Change</button>
                 <button class="account-btn logout"><a href="/app/users/logout.php">Sign out</a></button>
             </div>
         </form>
