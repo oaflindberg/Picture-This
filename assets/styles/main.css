@@ -334,6 +334,12 @@ h1 {
     /* border-radius: 2px; */
 }
 
+.posts .posts-in-account {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
 .posts p {
     width: 100px;
     text-align: center;
@@ -394,4 +400,8 @@ h1 {
     .post-in-feed {
         width: 30vw;
     }
+
+    .posts .posts-in-account {
+        width: 200px;
+        height: 200px;
 }
