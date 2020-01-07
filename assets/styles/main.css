@@ -331,7 +331,6 @@ h1 {
     height: 50px;
     width: auto;
     object-fit: contain;
-    /* border-radius: 2px; */
 }
 
 .posts .posts-in-account {
@@ -375,6 +374,8 @@ h1 {
 
     .content-feed {
         width: 50vw;
+        display: flex;
+        flex-direction: column;
     }
 
     .input {
@@ -397,8 +398,9 @@ h1 {
         width: auto;
     }
 
-    .post-in-feed {
+    .posts-in-feed .post-in-feed {
         width: 30vw;
+        margin: 0 auto;
     }
 
     .posts .posts-in-account {
