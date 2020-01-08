@@ -1,0 +1,44 @@
+nav {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+}
+
+.title {
+    font-family: "Bebas Neue", cursive;
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+button a {
+    color: #222222;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    list-style-type: none;
+    font-size: 12px;
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .title {
+        font-size: 32px;
+    }
+
+    nav ul {
+        font-size: 18px;
+    }
+}

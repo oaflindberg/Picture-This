@@ -1,0 +1,160 @@
+.account-btn {
+    margin: 0 10px 0 0;
+    margin-left: 0;
+}
+
+.account-input {
+    width: 60vw;
+    border-radius: 6px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.avatar-input {
+    padding-left: 0;
+}
+
+.biography-input {
+    width: 70vw;
+    border-radius: 6px;
+}
+
+.avatar-img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80vw;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 10vh;
+}
+
+.posts-header {
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+.posts-h1 {
+    margin-left: 20px;
+}
+
+.posts-h1,
+.account-settings-header {
+    color: white;
+    text-decoration: underline;
+}
+
+.account-settings-header {
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.pwd-change,
+.email-change,
+.bio-change,
+.posts-container,
+.avatar-change,
+.delete-account {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 80vw;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 2px solid white;
+}
+
+.posts-container {
+    border: none;
+    border-radius: 6px;
+}
+
+.bio-change {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.delete-account {
+    border: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.delete-btn {
+    margin-top: 10px;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 20px auto;
+}
+
+.textarea {
+    resize: none;
+    font-size: 14px;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid white;
+}
+
+.posts img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.posts .posts-in-account {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.posts p {
+    width: 100px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .account-input {
+        width: 20vw;
+    }
+
+    .biography-input {
+        width: 76vw;
+    }
+
+    .posts {
+        border: none;
+    }
+
+    .posts img {
+        height: 150px;
+        width: auto;
+    }
+
+    .posts .posts-in-account {
+        width: 200px;
+        height: 200px;
+    }
+}
