@@ -1,0 +1,56 @@
+.content-wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+}
+
+.content-feed {
+    width: 90vw;
+    border-radius: 6px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.posts-in-feed {
+    width: 80vw;
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+}
+
+.post-in-feed {
+    width: 80vw;
+    border-radius: 6px;
+}
+
+.icons {
+    width: 20px;
+    height: 20px;
+}
+
+.no-style-plz {
+    background: none;
+    width: 20px;
+    margin: 5px;
+}
+
+.poster-name-in-feed {
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.post-caption-in-feed {
+    margin: 20px 0;
+    font-size: 12px;
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .posts-in-feed {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid white;
+        width: 100%;
+    }
+}

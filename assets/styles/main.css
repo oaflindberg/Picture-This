@@ -95,39 +95,6 @@ nav ul {
     outline: none;
 }
 
-/* FEED */
-
-.posts-in-feed {
-    width: 80vw;
-}
-
-.post-in-feed {
-    width: 80vw;
-    border-radius: 6px;
-}
-
-.icons {
-    width: 20px;
-    height: 20px;
-}
-
-.no-style-plz {
-    background: none;
-    width: 20px;
-    margin: 5px;
-}
-
-.poster-name-in-feed {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.post-caption-in-feed {
-    margin: 20px 0;
-}
-
-/* FEED ENDS */
-
 button {
     width: 100px;
     height: 30px;
@@ -160,6 +127,7 @@ button:hover {
 .avatar-input {
     padding-left: 0;
 }
+
 .biography-input {
     width: 70vw;
     border-radius: 6px;
@@ -192,21 +160,6 @@ button:hover {
     color: #222222;
 }
 
-.content-wrapper {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    padding-top: 10vh;
-}
-
-.content-feed {
-    width: 90vw;
-    border-radius: 6px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
 h1 {
     color: white;
 }
@@ -214,6 +167,7 @@ h1 {
 .avatar-img {
     height: 50px;
     width: 50px;
+    object-fit: cover;
     border-radius: 100%;
 }
 
@@ -292,28 +246,9 @@ h1 {
     margin: 20px 0;
 }
 
-.edit-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    width: 80vw;
-    height: 50vh;
-    margin: 0 auto;
-    border-radius: 6px;
-}
-
 .textarea {
     resize: none;
     font-size: 14px;
-}
-
-.test {
-    display: flex;
-    align-items: center;
-    height: 100vh;
 }
 
 .posts {

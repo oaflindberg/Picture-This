@@ -1,0 +1,22 @@
+.new-post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.new-post {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    height: 40vh;
+    width: 80vw;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 6px;
+}
+
+.upload-post {
+    margin: 10px 0 0 0px;
+}

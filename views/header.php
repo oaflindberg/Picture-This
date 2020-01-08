@@ -12,6 +12,10 @@ require __DIR__ . '/../app/autoload.php';
     <title><?php echo $config['title']; ?></title>
 
     <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/editposts.css">
+    <link rel="stylesheet" href="/assets/styles/newpost.css">
+    <link rel="stylesheet" href="/assets/styles/feed.css">
+
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Lato&display=swap" rel="stylesheet">
 </head>
 

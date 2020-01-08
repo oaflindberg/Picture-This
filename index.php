@@ -32,6 +32,7 @@
                     </div>
                 <?php endforeach; ?>
             </section>
+
         </div>
 
     <?php else : ?>
