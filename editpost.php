@@ -28,7 +28,7 @@ $editPosts = $statement->fetch(PDO::FETCH_ASSOC);;
     <section class="edit-posts">
         <img class="edit-posts-image" src="/uploads/posts/<?php echo $editPosts['image']; ?>" alt="" height="150px" width="auto">
         <form class="edit-posts-form" action="/app/posts/update.php?id=<?php echo $_GET['id']; ?>" method="post">
-            <textarea class="textarea" name="editcaption" id="editcaption" cols="30" rows="5"><?php echo $editPosts['caption']; ?></textarea>
+            <textarea class="textarea edit-caption" name="editcaption" id="editcaption" cols="30" rows="5"><?php echo $editPosts['caption']; ?></textarea>
             <button class="update-post" type="submit">Update</button>
         </form>
     </section>
