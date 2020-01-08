@@ -1,0 +1,19 @@
+.login-input {
+    width: 70vw;
+    height: 5vh;
+    border: 2px solid #222222;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.login-input:focus {
+    outline: none;
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .login-input {
+        width: 25vw;
+        height: 5vh;
+    }
+}

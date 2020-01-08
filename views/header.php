@@ -13,6 +13,7 @@ require __DIR__ . '/../app/autoload.php';
 
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/navigation.css">
+    <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/editposts.css">
     <link rel="stylesheet" href="/assets/styles/newpost.css">
     <link rel="stylesheet" href="/assets/styles/feed.css">
