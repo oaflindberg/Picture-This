@@ -30,10 +30,11 @@
 
 
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
-                        <form action="app/posts/comment.php" method="post">
+                        <ul></ul>
+                        <form action="app/posts/comment.php" method="post" class="comment-form">
                             <div class="comment-field">
                                 <input type="hidden" name="postid" value="<?php echo $post['id'] ?>">
-                                <input class="hidden" type="text" name="comment" placeholder="Leave your comment here">
+                                <input class="comment-input hidden" type="text" name="comment" placeholder="Leave your comment here">
                                 <button class="send-comment hidden " type="submit">Send</button>
                             </div>
                         </form>
@@ -58,6 +59,7 @@
 
 <script src="assets/scripts/toggle.js"></script>
 <script src="assets/scripts/like.js"></script>
+<script src="assets/scripts/comment.js"></script>
 
 
 <?php require __DIR__ . '/views/footer.php'; ?>
