@@ -19,6 +19,7 @@
                     ?>
 
                     <div class="posts-in-feed" data-id="<?php echo $post['id']; ?>">
+                        <p class="poster-name-in-feed"><?php echo $post['firstname'] . ' ' . $post['lastname']; ?></p>
                         <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
 
                         <form action="/app/posts/reactions.php" method="post" class="like-form">
@@ -27,7 +28,7 @@
                             <img class="icons comment" src="/assets/icons/comment.svg" alt="">
                         </form>
 
-                        <p class="poster-name-in-feed"><?php echo $post['firstname'] . ' ' . $post['lastname']; ?></p>
+
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
                         <form action="app/posts/comment.php" method="post">
                             <div class="comment-field">
