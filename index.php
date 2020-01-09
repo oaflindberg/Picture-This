@@ -23,13 +23,19 @@
 
                         <form action="/app/posts/reactions.php" method="post" class="like-form">
                             <input type="hidden" name="postid" value="<?php echo $post['id'] ?>">
-                            <button class="no-style-plz" name="like" type="submit"><img class="icons" src="/assets/icons/<?php echo empty($isLike) ? "heart.svg" : "like.png"; ?>" alt="Image of a heart"></button>
+                            <button class="no-style-button" name="like" type="submit"><img class="icons" src="/assets/icons/<?php echo empty($isLike) ? "heart.svg" : "like.png"; ?>" alt="Image of a heart"></button>
                             <img class="icons comment" src="/assets/icons/comment.svg" alt="">
                         </form>
 
                         <p class="poster-name-in-feed"><?php echo $post['firstname'] . ' ' . $post['lastname']; ?></p>
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
-                        <input class="hidden" type="text" placeholder="Leave your comment here">
+                        <form action="app/posts/comment.php" method="post">
+                            <div class="comment-field">
+                                <input type="hidden" name="postid" value="<?php echo $post['id'] ?>">
+                                <input class="hidden" type="text" name="comment" placeholder="Leave your comment here">
+                                <button class="send-comment hidden " type="submit">Send</button>
+                            </div>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             </section>

@@ -27,19 +27,20 @@
 .icons {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .icons:focus {
     outline: none;
 }
 
-.no-style-plz {
+.no-style-button {
     background: none;
     width: 20px;
     margin: 5px;
 }
 
-.no-style-plz:focus {
+.no-style-button:focus {
     outline: none;
 }
 

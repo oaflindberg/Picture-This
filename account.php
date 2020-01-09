@@ -42,6 +42,4 @@ declare(strict_types=1); ?>
         </div>
     </section>
 
-    <script src="/assets/scripts/confirm.js"></script>
-
     <?php require __DIR__ . '/views/footer.php';

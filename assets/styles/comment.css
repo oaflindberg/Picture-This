@@ -1,15 +1,37 @@
+.comment-field {
+    display: flex;
+}
+
 .hidden {
     display: none;
 }
 
 .show {
-    display: block;
+    display: inline-block;
     border-radius: 6px;
     margin-bottom: 10px;
     padding: 5px;
+    font-size: 12px;
+    width: 80%;
+}
+
+.show-send {
+    display: block;
+    width: 20%;
+    margin-bottom: 10px;
     font-size: 12px;
 }
 
 .show:focus {
     outline: none;
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    .show {
+        width: 90%;
+    }
+
+    .show-send {
+        width: 10%;
+    }
 }
