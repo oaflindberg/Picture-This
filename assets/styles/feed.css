@@ -29,10 +29,18 @@
     height: 20px;
 }
 
+.icons:focus {
+    outline: none;
+}
+
 .no-style-plz {
     background: none;
     width: 20px;
     margin: 5px;
+}
+
+.no-style-plz:focus {
+    outline: none;
 }
 
 .poster-name-in-feed {

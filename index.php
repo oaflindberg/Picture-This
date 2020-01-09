@@ -21,14 +21,15 @@
                     <div class="posts-in-feed" data-id="<?php echo $post['id']; ?>">
                         <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
 
-                        <form action="/app/posts/reactions.php" method="post">
+                        <form action="/app/posts/reactions.php" method="post" class="like-form">
                             <input type="hidden" name="postid" value="<?php echo $post['id'] ?>">
                             <button class="no-style-plz" name="like" type="submit"><img class="icons" src="/assets/icons/<?php echo empty($isLike) ? "heart.svg" : "like.png"; ?>" alt="Image of a heart"></button>
-                            <img class="icons" src="/assets/icons/comment.svg" alt="">
+                            <img class="icons comment" src="/assets/icons/comment.svg" alt="">
                         </form>
 
                         <p class="poster-name-in-feed"><?php echo $post['firstname'] . ' ' . $post['lastname']; ?></p>
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
+                        <input class="hidden" type="text" placeholder="Leave your comment here">
                     </div>
                 <?php endforeach; ?>
             </section>
@@ -47,5 +48,9 @@
 
     <?php endif; ?>
 </article>
+
+<script src="assets/scripts/toggle.js"></script>
+<script src="assets/scripts/like.js"></script>
+
 
 <?php require __DIR__ . '/views/footer.php'; ?>
