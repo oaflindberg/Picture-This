@@ -1,10 +1,12 @@
 <?php
 
 declare(strict_types=1); ?>
-<img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
+
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php require __DIR__ . '/app/posts/show.php'; ?>
 <?php require __DIR__ . '/app/users/showavatar.php'; ?>
+
+<img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
 
 <?php if (!isset($_SESSION['user'])) {
     redirect('/');
@@ -34,7 +36,6 @@ declare(strict_types=1); ?>
                     <a href="editpost.php?id=<?php echo $post['id']; ?>">
                         <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
                     </a>
-                    <p><?php echo $post['caption']; ?></p>
                 </div>
             <?php endforeach; ?>
 

@@ -6,6 +6,8 @@ declare(strict_types=1); ?>
 <?php require __DIR__ . '/app/posts/show.php'; ?>
 <?php require __DIR__ . '/app/users/showavatar.php'; ?>
 
+
+
 <?php if (!isset($_SESSION['user'])) {
     redirect('/');
 } ?>
@@ -37,7 +39,7 @@ declare(strict_types=1); ?>
         <h2>Change email</h2>
         <form class="form-section" action="/app/users/account.php" method="post">
             <label for="oldemail">Current email</label>
-            <input class="account-input" type="email" name="oldemail" id="oldemail">
+            <input class="account-input" type="email" name="oldemail" id="oldemail">">
             <label for="email">New email</label>
             <input class="account-input" type="email" name="newemail" id="newemail">
             <div class="btns-container">
