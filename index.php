@@ -8,7 +8,7 @@
 
         <div class="content-wrapper">
             <section class="content-feed">
-                <?php foreach ($posts as $post) : ?>
+                <?php foreach ($feedPosts as $post) : ?>
 
                     <?php $statement = $pdo->prepare("SELECT * FROM reactions WHERE user_id = :user_id AND post_id = :post_id");
                     $statement->execute([
@@ -27,7 +27,6 @@
                             <button class="no-style-button" name="like" type="submit"><img class="icons" src="/assets/icons/<?php echo empty($isLike) ? "heart.svg" : "like.png"; ?>" alt="Image of a heart"></button>
                             <img class="icons comment" src="/assets/icons/comment.svg" alt="">
                         </form>
-
 
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
                         <ul></ul>

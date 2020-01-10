@@ -33,7 +33,7 @@ $editPosts = $statement->fetch(PDO::FETCH_ASSOC);;
         </form>
     </section>
     <section class="delete-posts">
-        <h1>Delete Post?</h1>
+        <h1 class="delete-post-h1">Delete Post?</h1>
         <form action="/app/posts/delete.php?id=<?php echo $_GET['id']; ?>" method="post">
             <button type="submit">Delete</button>
         </form>

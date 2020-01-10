@@ -47,6 +47,11 @@
     border-bottom-right-radius: 6px;
 }
 
+.delete-post-h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
     .edit-posts-image {
         height: 50%;

@@ -9,6 +9,10 @@ $statement->execute([
 
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$getFeed = $pdo->query('SELECT * FROM posts INNER JOIN users ON users.id = posts.user_id ORDER BY posts.id DESC');
+
+$feedPosts = $getFeed->fetchAll(PDO::FETCH_ASSOC);
+
 
 $getBio = $pdo->prepare('SELECT biography FROM users WHERE id = :id');
 $getBio->execute([
