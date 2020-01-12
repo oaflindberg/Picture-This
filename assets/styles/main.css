@@ -26,10 +26,6 @@
     font-size: 14px;
 }
 
-.input:focus {
-    outline: none;
-}
-
 .login-container,
 .sign-up-container {
     height: 100vh;

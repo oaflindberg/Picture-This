@@ -33,4 +33,8 @@
         height: 40vh;
         text-align: center;
     }
+
+    .sign-up-btn {
+        width: 10vw;
+    }
 }
