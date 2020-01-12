@@ -52,7 +52,7 @@
                 <h1>Welcome to Picture This!</h1>
                 <h5>This is just a simple btec version of Instagram made by Andreas Lindberg.</h5>
                 <h5>Don't have an account already? <br> Click below to sign up and enjoy this crappy version of Instagram.</h5>
-                <button> <a class="sign-up-btn" href="signup.php">SIGN UP</a></button>
+                <button class="sign-up-btn"><a href="signup.php">SIGN UP</a></button>
             </section>
         </div>
 

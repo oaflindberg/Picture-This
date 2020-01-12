@@ -21,7 +21,11 @@ declare(strict_types=1); ?>
 
                 <h1 class="posts-h1">Your posts</h1>
             </div>
-            <img class="avatar-img" src="/uploads/avatar/<?php echo $avatar['avatar']; ?>" alt="avatar">
+            <?php if (isset($avatar['avatar'])) : ?>
+                <img class="avatar-img" src="/uploads/avatar/<?php echo $avatar['avatar']; ?>" alt="avatar">
+            <?php else : ?>
+                <img class="avatar-img" src="/uploads/avatar/default.png" alt="avatar">
+            <?php endif; ?>
             <div class="account-settings">
                 <a href="settings.php">
                     <h1 class="posts-h1">Settings</h1>

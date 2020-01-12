@@ -3,4 +3,5 @@
 uploads/avatar/*
 uploads/posts/*
 !uploads/avatar/.gitkeep
+!uploads/avatar/default.png
 !uploads/posts/.gitkeep
