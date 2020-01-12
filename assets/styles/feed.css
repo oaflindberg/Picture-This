@@ -40,18 +40,10 @@
     cursor: pointer;
 }
 
-.icons:focus {
-    outline: none;
-}
-
 .no-style-button {
     background: none;
     width: 20px;
     margin: 5px 5px 5px 0;
-}
-
-.no-style-button:focus {
-    outline: none;
 }
 
 .poster-name-in-feed {
