@@ -20,7 +20,12 @@
                         <p class="poster-name-in-feed"><?php echo $post['firstname'] . ' ' . $post['lastname']; ?></p>
 
                         <div class="post-in-feed-container">
-                            <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
+                            <?php $image = $post['image']; ?>
+                            <?php if (file_exists(__DIR__ . "/uploads/posts/$image")) : ?>
+                                <img class="post-in-feed" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
+                            <?php else : ?>
+                                <img class="post-in-feed" src="/assets/images/image-not-available.jpg" alt="not available">
+                            <?php endif; ?>
                         </div>
 
                         <form action="/app/posts/reactions.php" method="post" class="like-form">

@@ -38,7 +38,12 @@ declare(strict_types=1); ?>
             <?php foreach (getPosts($pdo, $_SESSION['user']['id']) as $post) : ?>
                 <div class="posts" data-id="<?php echo $post['id']; ?>">
                     <a href="editpost.php?id=<?php echo $post['id']; ?>">
-                        <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
+                        <?php $image = $post['image']; ?>
+                        <?php if (file_exists(__DIR__ . "/uploads/posts/$image")) : ?>
+                            <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
+                        <?php else : ?>
+                            <img class="post-in-feed" src="/assets/images/image-not-available.jpg" alt="not available">
+                        <?php endif; ?>
                     </a>
                 </div>
             <?php endforeach; ?>
