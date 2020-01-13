@@ -31,7 +31,7 @@ Assignment in programming class @ Yrgo.
 ## Tested by
 
 - [Alexander Gustasfsson Flink](#https://github.com/alexandergustafssonflink)
--   
+- [Oskar Joss](#https://github.com/OskarJoss)
 -   
 
 ## Code Review
