@@ -4,11 +4,9 @@
 
     <?php if (isset($_SESSION['user'])) : ?>
 
-        <?php require __DIR__ . '/app/posts/show.php'; ?>
-
         <div class="content-wrapper">
             <section class="content-feed">
-                <?php foreach ($feedPosts as $post) : ?>
+                <?php foreach (getFeed($pdo) as $post) : ?>
 
                     <?php $statement = $pdo->prepare("SELECT * FROM reactions WHERE user_id = :user_id AND post_id = :post_id");
                     $statement->execute([
@@ -34,7 +32,11 @@
 
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
 
-                        <ul></ul>
+                        <ul>
+                            <?php foreach (getComments($pdo, $post['id']) as $comment) : ?>
+                                <li><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></li>
+                            <?php endforeach; ?>
+                        </ul>
 
                         <form action="app/posts/comment.php" method="post" class="comment-form">
                             <div class="comment-field">

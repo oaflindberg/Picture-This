@@ -3,8 +3,6 @@
 declare(strict_types=1); ?>
 <img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
 <?php require __DIR__ . '/views/header.php'; ?>
-<?php require __DIR__ . '/app/posts/show.php'; ?>
-<?php require __DIR__ . '/app/users/showavatar.php'; ?>
 
 
 
@@ -19,7 +17,7 @@ declare(strict_types=1); ?>
         <h2>Change biography</h2>
         <form class="form-section" action="/app/users/account.php" method="post">
             <label for="biography">Biography</label>
-            <textarea class="textarea biography-input account-input" name="biography" id="biography" cols="30" rows="5"><?php echo $biography["biography"]; ?></textarea>
+            <textarea class="textarea biography-input account-input" name="biography" id="biography" cols="30" rows="5"><?php echo getBiography($pdo, $_SESSION['user']['id']); ?></textarea>
             <div class="btns-container">
                 <button class="account-btn" type="submit">Update</button>
             </div>

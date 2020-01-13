@@ -3,7 +3,6 @@
 declare(strict_types=1); ?>
 
 <?php require __DIR__ . '/views/header.php'; ?>
-<?php require __DIR__ . '/app/posts/show.php'; ?>
 <?php require __DIR__ . '/app/users/showavatar.php'; ?>
 
 <img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
@@ -35,7 +34,7 @@ declare(strict_types=1); ?>
 
         <div class="posts-container">
 
-            <?php foreach ($posts as $post) : ?>
+            <?php foreach (getPosts($pdo, $_SESSION['user']['id']) as $post) : ?>
                 <div class="posts" data-id="<?php echo $post['id']; ?>">
                     <a href="editpost.php?id=<?php echo $post['id']; ?>">
                         <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">

@@ -23,6 +23,7 @@ if (!function_exists('redirect')) {
      * @param [type] $email
      * @return void
      */
+
     function logInWhenCreated($pdo, $emailIsValid)
     {
         $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
@@ -44,5 +45,102 @@ if (!function_exists('redirect')) {
 
             redirect('/');
         }
+    }
+
+    /**
+     * Get all comments from database
+     *
+     * @param [type] $pdo
+     * @param [type] $postId
+     * @return void
+     */
+
+    function getComments($pdo, $postId)
+    {
+        $statement = $pdo->prepare('SELECT users.firstname, users.lastname, comments.content, comments.id FROM users INNER JOIN comments ON comments.user_id = users.id WHERE comments.post_id = :postid ORDER BY comments.id');
+
+        $statement->execute([
+            ':postid' => $postId
+        ]);
+
+        $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $comments;
+    }
+
+    /**
+     * GETS USER BY ID
+     *
+     * @param [type] $pdo
+     * @param [type] $userId
+     * @return void
+     */
+
+    function getUserById($pdo, $userId)
+    {
+        $statement = $pdo->prepare('SELECT * FROM firstname, lastname, avatar WHERE id = :userId');
+
+        $statement->execute([
+            ':userId' => $userId
+        ]);
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
+
+    /**
+     * FETCH ALL POSTS AND ADD THEM TO THE FEED IN INDEX.PHP
+     *
+     * @param [type] $pdo
+     * @return void
+     */
+
+    function getFeed($pdo)
+    {
+        $getFeed = $pdo->query('SELECT posts.id, posts.user_id, posts.image, posts.caption, users.firstname, users.lastname FROM posts INNER JOIN users ON users.id = posts.user_id ORDER BY posts.id DESC');
+
+        $feedPosts = $getFeed->fetchAll(PDO::FETCH_ASSOC);
+
+        return $feedPosts;
+    }
+
+    /**
+     * FETCH ALL POSTS BY USER AND SHOW IN ACCOUNT.PHP 
+     *
+     * @param [type] $pdo
+     * @param [type] $userId
+     * @return void
+     */
+
+    function getPosts($pdo, $userId)
+    {
+        $statement = $pdo->prepare('SELECT image, caption, posts.id, firstname, lastname FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id ORDER BY posts.id DESC');
+        $statement->execute([
+            ':id' => $_SESSION['user']['id']
+        ]);
+
+        $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $posts;
+    }
+
+    /**
+     * FETCH BIOGRAPHY 
+     *
+     * @param [type] $pdo
+     * @param [type] $userId
+     * @return void
+     */
+    function getBiography($pdo, $userId)
+    {
+        $getBio = $pdo->prepare('SELECT biography FROM users WHERE id = :id');
+        $getBio->execute([
+            ':id' => $_SESSION['user']['id']
+        ]);
+
+        $biography = $getBio->fetch(PDO::FETCH_ASSOC);
+
+        return $biography['biography'];
     }
 }
