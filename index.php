@@ -31,7 +31,10 @@
                             <img class="icons comment" src="/assets/icons/comment.svg" alt="">
                         </form>
 
+
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
+
+                        <ul></ul>
 
                         <form action="app/posts/comment.php" method="post" class="comment-form">
                             <div class="comment-field">

@@ -15,6 +15,9 @@ commentForms.forEach(commentForm => {
             .then(json => {
                 const inputField = e.target.querySelector('.comment-field .comment-input');
                 inputField.value = ''
+
+                const list = e.target.parentElement.querySelector('ul')
+                console.log(json);
             })
             .catch(error => {
                 console.error("Error:", error);
