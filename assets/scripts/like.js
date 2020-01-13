@@ -5,7 +5,7 @@ likeForms.forEach(likeForm => {
         e.preventDefault();
         const formData = new FormData(likeForm);
 
-        fetch('http://localhost:1337/app/posts/reactions.php', {
+        fetch('/app/posts/reactions.php', {
             method: 'POST',
             body: formData
         })

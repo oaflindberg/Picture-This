@@ -78,7 +78,7 @@ if (!function_exists('redirect')) {
 
     function getUserById($pdo, $userId)
     {
-        $statement = $pdo->prepare('SELECT * FROM firstname, lastname, avatar WHERE id = :userId');
+        $statement = $pdo->prepare('SELECT firstname, lastname, avatar, biography FROM users WHERE id = :userId');
 
         $statement->execute([
             ':userId' => $userId
@@ -123,24 +123,5 @@ if (!function_exists('redirect')) {
         $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $posts;
-    }
-
-    /**
-     * FETCH BIOGRAPHY 
-     *
-     * @param [type] $pdo
-     * @param [type] $userId
-     * @return void
-     */
-    function getBiography($pdo, $userId)
-    {
-        $getBio = $pdo->prepare('SELECT biography FROM users WHERE id = :id');
-        $getBio->execute([
-            ':id' => $_SESSION['user']['id']
-        ]);
-
-        $biography = $getBio->fetch(PDO::FETCH_ASSOC);
-
-        return $biography['biography'];
     }
 }

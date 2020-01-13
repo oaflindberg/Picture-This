@@ -10,6 +10,8 @@ declare(strict_types=1); ?>
     redirect('/');
 } ?>
 
+<?php $user = getUserById($pdo, $_SESSION['user']['id']) ?>
+
 <div class="account-container">
 
     <h1 class="account-settings-header">Account settings</h1>
@@ -17,7 +19,7 @@ declare(strict_types=1); ?>
         <h2>Change biography</h2>
         <form class="form-section" action="/app/users/account.php" method="post">
             <label for="biography">Biography</label>
-            <textarea class="textarea biography-input account-input" name="biography" id="biography" cols="30" rows="5"><?php echo getBiography($pdo, $_SESSION['user']['id']); ?></textarea>
+            <textarea class="textarea biography-input account-input" name="biography" id="biography" cols="30" rows="5"><?php echo $user['biography']; ?></textarea>
             <div class="btns-container">
                 <button class="account-btn" type="submit">Update</button>
             </div>

@@ -3,13 +3,14 @@
 declare(strict_types=1); ?>
 
 <?php require __DIR__ . '/views/header.php'; ?>
-<?php require __DIR__ . '/app/users/showavatar.php'; ?>
 
 <img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
 
 <?php if (!isset($_SESSION['user'])) {
     redirect('/');
 } ?>
+
+<?php $user = getUserById($pdo, $_SESSION['user']['id']) ?>
 
 <div class="account-container">
 
@@ -20,8 +21,8 @@ declare(strict_types=1); ?>
 
                 <h1 class="posts-h1">Your posts</h1>
             </div>
-            <?php if (isset($avatar['avatar'])) : ?>
-                <img class="avatar-img" src="/uploads/avatar/<?php echo $avatar['avatar']; ?>" alt="avatar">
+            <?php if (isset($user['avatar'])) : ?>
+                <img class="avatar-img" src="/uploads/avatar/<?php echo $user['avatar']; ?>" alt="avatar">
             <?php else : ?>
                 <img class="avatar-img" src="/uploads/avatar/default.png" alt="avatar">
             <?php endif; ?>
