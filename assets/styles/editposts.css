@@ -36,12 +36,13 @@
 .delete-posts {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     border-top: 2px solid white;
     background: rgba(0, 0, 0, 0.7);
     padding: 10px;
     width: 80vw;
-    height: 10vh;
+    height: 15vh;
     margin: 0 auto;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
