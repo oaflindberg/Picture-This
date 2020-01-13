@@ -16,8 +16,12 @@ commentForms.forEach(commentForm => {
                 const inputField = e.target.querySelector('.comment-field .comment-input');
                 inputField.value = ''
 
-                const list = e.target.parentElement.querySelector('ul')
-                console.log(json);
+                json.forEach(comment => {
+                    const list = e.target.parentElement.querySelector('ul')
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${comment.firstname} ${comment.lastname}: ${comment.content};`
+                    list.appendChild(listItem);
+                });
             })
             .catch(error => {
                 console.error("Error:", error);

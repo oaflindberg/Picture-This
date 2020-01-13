@@ -52,6 +52,11 @@
     font-weight: bold;
 }
 
+ul {
+    list-style-type: none;
+    font-size: 12px;
+}
+
 .post-caption-in-feed {
     margin: 0 0 10px 0;
     font-size: 12px;
