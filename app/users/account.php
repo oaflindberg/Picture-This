@@ -60,6 +60,7 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
         redirect('/app/users/logout.php');
     } else {
         $_SESSION['emailNotValid'] = 'Something went wrong. Please try again.';
+        redirect('/settings.php');
     }
 }
 
@@ -91,13 +92,12 @@ if (isset($_FILES['profilepicture'])) {
 
     $avatar = $_FILES['profilepicture'];
 
-    if ($avatar['type'] !== "image/jpeg" || $avatar['type'] !== "image/png") {
+    if ($avatar['type'] !== 'image/jpeg' && $avatar['type'] !== 'image/png') {
         $_SESSION['fileType'] = 'File type not accepted. Please choose a jpg or png file.';
         redirect('/settings.php');
     }
-
     if ($avatar['size' > 2000000]) {
-        $_SESSION['tooBig'] = 'File size too big. Please choose an image smallen than 2MB.';
+        $_SESSION['tooBig'] = 'File size too big. Please choose an image smaller than 2MB.';
         redirect('/settings.pgp');
     }
 

@@ -9,6 +9,10 @@ declare(strict_types=1); ?>
         <div class="new-post-container">
             <section class="new-post">
                 <form class="form-section" action="app/posts/store.php" method="post" enctype="multipart/form-data">
+                    <?php if (isset($_SESSION['fileType'])) : ?>
+                        <?php echo $_SESSION['fileType']; ?>
+                        <?php unset($_SESSION['fileType']); ?>
+                    <?php endif; ?>
                     <label for="file">Choose file to upload</label>
                     <input type="file" name="file" id="file" accept="image/jpg, image/png" required>
                     <label for="caption">Caption</label>
