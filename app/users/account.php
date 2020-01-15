@@ -96,7 +96,7 @@ if (isset($_FILES['profilepicture'])) {
         $_SESSION['fileType'] = 'File type not accepted. Please choose a jpg or png file.';
         redirect('/settings.php');
     }
-    if ($avatar['size' > 2000000]) {
+    if ($avatar['size'] > 2000000) {
         $_SESSION['tooBig'] = 'File size too big. Please choose an image smaller than 2MB.';
         redirect('/settings.pgp');
     }
@@ -113,9 +113,11 @@ if (isset($_FILES['profilepicture'])) {
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     $currentAvatar = $user['avatar'];
-    $fullPath = __DIR__ . "/../../uploads/avatar/$currentAvatar";
-    unlink($fullPath);
 
+    if ($currentAvatar !== null) {
+        $fullPath = __DIR__ . "/../../uploads/avatar/$currentAvatar";
+        unlink($fullPath);
+    }
 
     $newAvatar = $pdo->prepare('UPDATE users SET avatar = :newavatar WHERE id = :id');
     $newAvatar->execute([
