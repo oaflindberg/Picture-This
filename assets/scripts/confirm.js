@@ -1,5 +1,3 @@
-'use strict';
-
 const deleteBtn = document.querySelector('.delete-btn');
 
 deleteBtn.addEventListener('click', (e) => {
