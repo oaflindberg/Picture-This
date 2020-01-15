@@ -17,10 +17,6 @@ $statement->execute([
     ':postid' => $_GET['id']
 ]);
 
-if (!$statement) {
-    die(var_dump($pdo->errorInfo()));
-}
-
 $editPosts = $statement->fetch(PDO::FETCH_ASSOC);;
 ?>
 

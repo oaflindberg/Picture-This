@@ -15,10 +15,6 @@ if (isset($_POST['editcaption'])) {
         ':id' => $_GET['id']
     ]);
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
-
     redirect('/account.php');
 }
 
