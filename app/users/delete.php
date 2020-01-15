@@ -32,10 +32,12 @@ if (isset($_POST)) {
     $statement->execute([
         ':id' => $_SESSION['user']['id']
     ]);
-    $posts = $statement->fetch(PDO::FETCH_ASSOC);
+
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     if (!empty($posts)) {
-        $images = $posts['image'];
-        foreach ($images as $image) {
+        foreach ($posts as $post) {
+            $image = $post['image'];
             $fullPath = __DIR__ . "/../../uploads/posts/$image";
             unlink($fullPath);
         }
