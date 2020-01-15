@@ -29,6 +29,9 @@ if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm']))
         ]);
 
         redirect('/app/users/logout.php');
+    } else {
+        $_SESSION['doesNotMatch'] = 'Passwords does not match.';
+        redirect('/settings.php');
     }
 }
 
@@ -36,8 +39,10 @@ if (isset($_POST['oldpassword'], $_POST['password'], $_POST['passwordconfirm']))
  *  UPDATE EMAIL
  */
 if (isset($_POST['oldemail'], $_POST['newemail'])) {
-    $oldEmail = $_POST['oldemail'];
-    $newEmail = $_POST['newemail'];
+    $oldEmail = filter_var($_POST['oldemail'], FILTER_SANITIZE_EMAIL);
+    $oldValidEmail = filter_var($_POST['oldemail'], FILTER_VALIDATE_EMAIL);
+    $newEmail = filter_var($_POST['newemail'], FILTER_SANITIZE_EMAIL);
+    $newValidEmail = filter_var($_POST['newemail'], FILTER_VALIDATE_EMAIL);
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->execute([
@@ -47,14 +52,16 @@ if (isset($_POST['oldemail'], $_POST['newemail'])) {
 
     $storedEmail = $user['email'];
 
-    if ($oldEmail === $storedEmail && $newEmail !== $storedEmail) {
+    if ($oldValidEmail === $storedEmail && $newValidEmail !== $storedEmail) {
         $changeQuery = $pdo->prepare('UPDATE users SET email = :newemail WHERE id = :id');
         $changeQuery->execute([
-            ':newemail' => $newEmail,
+            ':newemail' => $newValidEmail,
             ':id' => $_SESSION['user']['id']
         ]);
 
         redirect('/app/users/logout.php');
+    } else {
+        $_SESSION['emailNotValid'] = 'Something went wrong. Please try again.';
     }
 }
 
@@ -107,4 +114,7 @@ if (isset($_FILES['profilepicture'])) {
         ':newavatar' => $filename,
     ]);
     redirect('/account.php');
+} else {
+    $_SESSION['noAvatar'] = 'Please select a file to update your avatar';
+    redirect(('/settings.php'));
 }

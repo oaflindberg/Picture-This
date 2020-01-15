@@ -19,8 +19,8 @@ if (!function_exists('redirect')) {
     /**
      * Function that gets the user logged in after account has been created
      *
-     * @param [type] $pdo
-     * @param [type] $email
+     * @param pdo $pdo
+     * @param string $email
      * @return void
      */
 
@@ -50,8 +50,8 @@ if (!function_exists('redirect')) {
     /**
      * Get all comments from database
      *
-     * @param [type] $pdo
-     * @param [type] $postId
+     * @param pod $pdo
+     * @param int $postId
      * @return void
      */
 
@@ -71,8 +71,8 @@ if (!function_exists('redirect')) {
     /**
      * GETS USER BY ID
      *
-     * @param [type] $pdo
-     * @param [type] $userId
+     * @param pdo $pdo
+     * @param int $userId
      * @return void
      */
 
@@ -92,7 +92,7 @@ if (!function_exists('redirect')) {
     /**
      * FETCH ALL POSTS AND ADD THEM TO THE FEED IN INDEX.PHP
      *
-     * @param [type] $pdo
+     * @param pdo $pdo
      * @return void
      */
 
@@ -108,8 +108,8 @@ if (!function_exists('redirect')) {
     /**
      * FETCH ALL POSTS BY USER AND SHOW IN ACCOUNT.PHP 
      *
-     * @param [type] $pdo
-     * @param [type] $userId
+     * @param pdo $pdo
+     * @param int $userId
      * @return void
      */
 
@@ -117,7 +117,7 @@ if (!function_exists('redirect')) {
     {
         $statement = $pdo->prepare('SELECT image, caption, posts.id, firstname, lastname FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id ORDER BY posts.id DESC');
         $statement->execute([
-            ':id' => $_SESSION['user']['id']
+            ':id' => $userId
         ]);
 
         $posts = $statement->fetchAll(PDO::FETCH_ASSOC);

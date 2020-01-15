@@ -46,7 +46,7 @@
                         <form action="app/posts/comment.php" method="post" class="comment-form">
                             <div class="comment-field">
                                 <input type="hidden" name="postid" value="<?php echo $post['id'] ?>">
-                                <input class="comment-input hidden" type="text" name="comment" placeholder="Leave your comment here">
+                                <input class="comment-input hidden" type="text" name="comment" placeholder="Leave your comment here" autocomplete="off">
                                 <button class="send-comment hidden " type="submit">Send</button>
                             </div>
                         </form>

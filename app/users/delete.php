@@ -12,7 +12,7 @@ if (isset($_POST)) {
     ]);
     $userInfo = $statement->fetch(PDO::FETCH_ASSOC);
     $userAvatar = $userInfo['avatar'];
-    $fullPath = __DIR__ . "/../../uploads/avatars/$userAvatar";
+    $fullPath = __DIR__ . "/../../uploads/avatar/$userAvatar";
     unlink($fullPath);
 
     $statement = $pdo->prepare('DELETE FROM users WHERE id = :id');
