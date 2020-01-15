@@ -30,10 +30,17 @@ declare(strict_types=1); ?>
         <form class="form-section" action="/app/users/account.php" method="post" enctype="multipart/form-data">
             <label for="profilepicture">Profile picture</label>
             <input class="account-input avatar-input" type="file" accept="image/jpg, image/png" name="profilepicture" id="profilepicture" required>
-            <?php if (isset($_SESSION['noAvatar'])) : ?>
-                <?php echo $_SESSION['noAvatar']; ?>
-                <?php unset($_SESSION['noAvatar']); ?>
+
+            <?php if (isset($_SESSION['fileType'])) : ?>
+                <?php echo $_SESSION['fileType']; ?>
+                <?php unset($_SESSION['fileType']); ?>
             <?php endif; ?>
+
+            <?php if (isset($_SESSION['tooBig'])) : ?>
+                <?php echo $_SESSION['tooBig']; ?>
+                <?php unset($_SESSION['tooBig']); ?>
+            <?php endif; ?>
+
             <div class="btns-container">
                 <button class="account-btn" type="submit">Upload</button>
             </div>

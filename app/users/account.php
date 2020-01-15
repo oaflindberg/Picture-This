@@ -91,28 +91,36 @@ if (isset($_FILES['profilepicture'])) {
 
     $avatar = $_FILES['profilepicture'];
 
-    if (!empty($avatar)) {
-        $filename = 'avatar' . '-' . date('ymdsu') . '.png';
-
-        $destination = __DIR__ . '/../../uploads/avatar/' . $filename;
-
-        move_uploaded_file($avatar['tmp_name'], $destination);
-
-        $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
-        $statement->execute([
-            ':id' => $_SESSION['user']['id']
-        ]);
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
-
-
-        $newAvatar = $pdo->prepare('UPDATE users SET avatar = :newavatar WHERE id = :id');
-        $newAvatar->execute([
-            ':id' => $_SESSION['user']['id'],
-            ':newavatar' => $filename,
-        ]);
-        redirect('/account.php');
-    } else {
-        $_SESSION['noAvatar'] = 'Please select a file to update your avatar';
+    if ($avatar['type'] !== "image/jpeg" || $avatar['type'] !== "image/png") {
+        $_SESSION['fileType'] = 'File type not accepted. Please choose a jpg or png file.';
         redirect('/settings.php');
     }
+
+    if ($avatar['size' > 2000000]) {
+        $_SESSION['tooBig'] = 'File size too big. Please choose an image smallen than 2MB.';
+        redirect('/settings.pgp');
+    }
+
+    $filename = 'avatar' . '-' . date('ymdsu') . '.png';
+
+    $destination = __DIR__ . '/../../uploads/avatar/' . $filename;
+
+    move_uploaded_file($avatar['tmp_name'], $destination);
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->execute([
+        ':id' => $_SESSION['user']['id']
+    ]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $currentAvatar = $user['avatar'];
+    $fullPath = __DIR__ . "/../../uploads/avatar/$currentAvatar";
+    unlink($fullPath);
+
+
+    $newAvatar = $pdo->prepare('UPDATE users SET avatar = :newavatar WHERE id = :id');
+    $newAvatar->execute([
+        ':id' => $_SESSION['user']['id'],
+        ':newavatar' => $filename,
+    ]);
+    redirect('/account.php');
 }
