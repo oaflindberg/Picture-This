@@ -49,7 +49,7 @@ Assignment in programming class @ Yrgo.
  
 - Functions.php: Don't forget to write the type in your parameters! :)
  
-- Functions.php:116 &. 120 - When you use this function in ex. account.php:38 you're sending the user-id as a parameter but you're not using it in the function. You could either skip the parameter $userId and just write $_SESSION['user']['id'] directly, like you aldready have. Or change line 120 (in functions.php) to $userId to prevent from repeating yourself.
+- Functions.php:116 &. 120 - When you use this function in ex. account.php:38 you're sending the user-id as a parameter but you're not using it in the function. You could either skip the parameter $userId and just write `$_SESSION['user']['id']` directly, like you aldready have. Or change line 120 (in functions.php) to $userId to prevent from repeating yourself.
  
 - Main.css:14-20 - This is merely a suggestion!! Instead of using an img-tag for the backgrounds, you could use the background-image property in CSS which automatically stays in the background and is easier to handle! :)
 
@@ -57,3 +57,5 @@ Assignment in programming class @ Yrgo.
 
 Code review by [Betsy Alva Soplin](#https://github.com/milliebase)
 
+## Picture That updater
+DEV: [Oskar Turesson](!https://github.com/Cleanly1)
