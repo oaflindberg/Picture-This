@@ -43,9 +43,16 @@ declare(strict_types=1); ?>
                     <a href="settings.php">
                         <h1 class="posts-h1">Settings</h1>
                     </a>
+                <?php else : ?>
+                    <form class="followForm" action="app/users/<?php echo !checkIfFollowed($pdo, intval($user['id']), intval($_SESSION['user']['id'])) ? "follow.php" : "unfollow.php" ?>" method="post">
+                        <input type="hidden" name="userId" value="<?php echo $user['id'] ?>">
+                        <button class="<?php echo !checkIfFollowed($pdo, intval($user['id']), intval($_SESSION['user']['id'])) ? 'isNotFollowed' : 'hidden' ?>" type="submit">Follow</button>
+                        <button class="<?php echo !checkIfFollowed($pdo, intval($user['id']), intval($_SESSION['user']['id'])) ? 'hidden' : 'isFollowed' ?>" type="submit">Unfollow</button>
+                    </form>
                 <?php endif; ?>
-            </div>
 
+
+            </div>
 
 
         </section>

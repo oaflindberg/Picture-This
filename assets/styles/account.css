@@ -145,6 +145,16 @@
     margin-top: 10px;
 }
 
+.followForm {
+    margin: 5px 2.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.followForm button {
+    margin: 0;
+}
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
     .account-input {
         width: 20vw;

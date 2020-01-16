@@ -125,3 +125,28 @@ if (!function_exists('redirect')) {
         return $posts;
     }
 }
+
+if (!function_exists('checkIfFollowed')) {
+    /**
+     * Checks if a user already follows another user
+     * @param  object $pdo    [description]
+     * @param  int    $followedUser [description]
+     * @param  int    $userId
+     * @return mixed           [Returns an array or false]
+     */
+    function checkIfFollowed(object $pdo, int $followedUser, int $userId)
+    {
+
+        $statement = $pdo->prepare('SELECT * FROM follows WHERE user_id_followed = :followedUser AND user_id_follows = :userId');
+        $statement->execute([
+            ':followedUser' => $followedUser,
+            ':userId' => $userId
+        ]);
+
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+}
