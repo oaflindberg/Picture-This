@@ -1,5 +1,4 @@
 const searchForm = document.querySelector(".search-form");
-console.log(searchForm);
 
 searchForm.addEventListener("submit", function() {
     event.preventDefault();

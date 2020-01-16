@@ -59,3 +59,6 @@ Code review by [Betsy Alva Soplin](#https://github.com/milliebase)
 
 ## Picture That updater
 DEV: [Oskar Turesson](!https://github.com/Cleanly1)
+
+- As a user I should be able to follow and unfollow other users and see their feeds.
+

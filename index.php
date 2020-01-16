@@ -20,11 +20,11 @@
         foreach (getUserPosts($pdo, $_SESSION['user']['id']) as $userPost) {
             $posts[] = $userPost;
         }
-
+        $posts = sortsArrays($posts);
         ?>
         <div class="content-wrapper">
             <section class="content-feed">
-                <?php foreach (sortsArrays($posts) as $post) : ?>
+                <?php foreach ($posts as $post) : ?>
 
                     <?php $statement = $pdo->prepare("SELECT * FROM reactions WHERE user_id = :user_id AND post_id = :post_id");
                     $statement->execute([
@@ -57,7 +57,15 @@
 
                         <ul>
                             <?php foreach (getComments($pdo, $post['id']) as $comment) : ?>
-                                <li><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></li>
+                                <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
+                                    <li>
+                                        <p class="comment"><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></p>
+                                        <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="edit">Edit</button>
+                                        <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="delete">Delete</button>
+                                    </li>
+                                <?php else : ?>
+                                    <li><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></li>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
 
@@ -70,6 +78,9 @@
                         </form>
                     </div>
                 <?php endforeach; ?>
+                <?php if (empty($posts)) : ?>
+                    <h1>Post from you and those you follow will show up here</h1>
+                <?php endif; ?>
             </section>
 
         </div>
@@ -90,6 +101,7 @@
 <script src="assets/scripts/toggle.js"></script>
 <script src="assets/scripts/like.js"></script>
 <script src="assets/scripts/comment.js"></script>
+<script src="assets/scripts/edit-comment.js"></script>
 
 
 <?php require __DIR__ . '/views/footer.php'; ?>

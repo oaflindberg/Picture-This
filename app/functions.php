@@ -57,7 +57,7 @@ if (!function_exists('redirect')) {
 
     function getComments($pdo, $postId)
     {
-        $statement = $pdo->prepare('SELECT users.firstname, users.lastname, comments.content, comments.id FROM users INNER JOIN comments ON comments.user_id = users.id WHERE comments.post_id = :postid ORDER BY comments.id');
+        $statement = $pdo->prepare('SELECT users.firstname, users.lastname, comments.content, comments.id, comments.user_id FROM users INNER JOIN comments ON comments.user_id = users.id WHERE comments.post_id = :postid ORDER BY comments.id');
 
         $statement->execute([
             ':postid' => $postId
