@@ -4,13 +4,15 @@
 
 
 <div class="content-wrapper">
-    <form class="search-form" action="" method="POST">
-        <input type="text" name="" value="" placeholder="Search for a user...">
-        <button class="searchButton" type="submit" name="button">Search</button>
-    </form>
+    <div class="search-wrapper">
+        <form class="search-form" action="" method="POST">
+            <input type="text" name="search" placeholder="Search for a user...">
+            <button class="searchButton" type="submit" name="button">Search</button>
+        </form>
 
-    <div class="user-list">
+        <div class="user-list">
 
+        </div>
     </div>
 </div>
 

@@ -6,9 +6,7 @@ searchForm.addEventListener("submit", function() {
 
     const searchInput = searchForm.querySelector("input");
 
-    window.location.href + "?search=" + searchInput.value;
-
-    const userList = document.querySelector(".userList");
+    const userList = document.querySelector(".user-list");
 
     userList.innerHTML = "";
 
@@ -18,7 +16,7 @@ searchForm.addEventListener("submit", function() {
         const listItem = `<h1>You have to search for something</h1>`;
         userList.innerHTML += listItem;
     } else {
-        fetch("app/users/search.php?search=" + searchInput.value, {
+        fetch("app/users/search.php", {
             method: "POST",
             body: formData
         })
@@ -26,13 +24,18 @@ searchForm.addEventListener("submit", function() {
                 return response.json();
             })
             .then(function(users) {
+                console.log(users);
                 users.forEach(function(user) {
                     if (user["error"] === 404) {
                         const listItem = `<h1>We couldn't find any users</h1>`;
                         userList.innerHTML += listItem;
                     } else {
-                        const listItem = `<li class="searchedProfiles"><a href="/profile.php?username=${user["username"]}">
-                        <img class="profileImageSearch" src="${user["avatar_image"]}"><p>${user["username"]}</p>
+                        const listItem = `<li class="searchedProfiles"><a href="/account.php?id=${
+                            user["id"]
+                        }">
+                        <img class="profileImageSearch" src="/uploads/avatar/${
+                            user["avatar"]
+                        } "><p>${user["firstname"] + " " + user["lastname"]}</p>
                         </a></li>`;
                         userList.innerHTML += listItem;
                     }

@@ -78,7 +78,7 @@ if (!function_exists('redirect')) {
 
     function getUserById($pdo, $userId)
     {
-        $statement = $pdo->prepare('SELECT firstname, lastname, avatar, biography FROM users WHERE id = :userId');
+        $statement = $pdo->prepare('SELECT id, firstname, lastname, avatar, biography FROM users WHERE id = :userId');
 
         $statement->execute([
             ':userId' => $userId

@@ -1,1 +1,10 @@
+.search-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+.search-form {
+    margin: 10px 40px;
+}

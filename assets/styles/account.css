@@ -33,6 +33,10 @@
     align-items: center;
 }
 
+.account-name {
+    color: white;
+}
+
 .account-container {
     display: flex;
     justify-content: center;
