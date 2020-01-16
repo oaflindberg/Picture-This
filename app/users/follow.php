@@ -16,6 +16,7 @@ if (isset($_POST['userId'])) {
     $followedUser = getUserById($pdo, $followedUser);
 
     $check = checkIfFollowed($pdo, intval($followedUser['id']), intval($_SESSION['user']['id']));
+
     if ($check !== false) {
         $_SESSION['errors'][] = 'You already follows this user';
     }

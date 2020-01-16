@@ -150,3 +150,55 @@ if (!function_exists('checkIfFollowed')) {
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 }
+
+if (!function_exists('getFollowing')) {
+    /**
+     * Gets all the users a person is following
+     * @param  object $pdo    [description]
+     * @param  int    $userId [description]
+     * @return array            [description]
+     */
+    function getFollowing(object $pdo, int $userId): array
+    {
+
+        $statement = $pdo->prepare('SELECT * FROM follows LEFT JOIN users ON follows.followed_user_id = users.id WHERE follows_user_id = :user_id');
+        $statement->execute([
+            ':user_id' => $userId
+        ]);
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+
+if (!function_exists('getUserPosts')) {
+    /**
+     * Gets an users posts
+     * @param  object $pdo [database]
+     * @param  int $id      The selected user
+     * @return array       [the users posts]
+     */
+    function getUserPosts(object $pdo, int $id): array
+    {
+        $statement = $pdo->prepare('SELECT posts.id, posts.user_id, posts.image, posts.caption, users.id as user_id, users.firstname, users.lastname, users.avatar FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE posts.user_id = :id ORDER BY posts.id DESC');
+        $statement->execute([
+            ':id' => $id
+        ]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+
+if (!function_exists('sortsArrays')) {
+    /**
+     * Sorts the articles array by published date
+     * @param  array $array [description]
+     * @return array        [description]
+     */
+    function sortsArrays(array $array): array
+    {
+        usort($array, function ($arrayItem1, $arrayItem2) {
+            return $arrayItem2['id'] <=> $arrayItem1['id'];
+        });
+
+        return $array;
+    }
+}

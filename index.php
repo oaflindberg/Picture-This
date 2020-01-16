@@ -3,10 +3,28 @@
 <article>
 
     <?php if (isset($_SESSION['user'])) : ?>
+        <?php
 
+        $posts = [];
+
+        $statement = $pdo->prepare('SELECT users.id, users.firstname, users.lastname, users.avatar FROM users LEFT JOIN follows ON users.id = follows.user_id_followed WHERE follows.user_id_follows = :id');
+        $statement->execute([
+            ':id' => $_SESSION['user']['id']
+        ]);
+
+        foreach (($statement->fetchAll(PDO::FETCH_ASSOC)) as $followed) {
+            foreach (getUserPosts($pdo, intval($followed['id'])) as $followsPost) {
+                $posts[] = $followsPost;
+            }
+        }
+        foreach (getUserPosts($pdo, $_SESSION['user']['id']) as $userPost) {
+            $posts[] = $userPost;
+        }
+
+        ?>
         <div class="content-wrapper">
             <section class="content-feed">
-                <?php foreach (getFeed($pdo) as $post) : ?>
+                <?php foreach (sortsArrays($posts) as $post) : ?>
 
                     <?php $statement = $pdo->prepare("SELECT * FROM reactions WHERE user_id = :user_id AND post_id = :post_id");
                     $statement->execute([

@@ -59,8 +59,8 @@ declare(strict_types=1); ?>
         <h2 class="account-name"><?php echo $user['firstname'] . ' ' .  $user['lastname'] ?></h2>
 
         <div class="posts-container">
-
-            <?php foreach (getPosts($pdo, $user['id']) as $post) : ?>
+            <?php $posts = getPosts($pdo, $user['id']) ?>
+            <?php foreach ($posts as $post) : ?>
                 <div class="posts" data-id="<?php echo $post['id']; ?>">
                     <a href="editpost.php?id=<?php echo $post['id']; ?>">
                         <?php $image = $post['image']; ?>
@@ -72,6 +72,9 @@ declare(strict_types=1); ?>
                     </a>
                 </div>
             <?php endforeach; ?>
+            <?php if (empty($posts)) : ?>
+                <h1>No posts</h1>
+            <?php endif; ?>
 
         </div>
     </section>
