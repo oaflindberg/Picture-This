@@ -59,9 +59,14 @@
                             <?php foreach (getComments($pdo, $post['id']) as $comment) : ?>
                                 <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
                                     <li>
+
                                         <p class="comment"><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></p>
+                                        <form class="delete-form" method="post">
+                                            <input class="hidden" type="hidden" name="commentid" value="<?php echo $comment['id'] ?>">
+                                            <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="delete">Delete</button>
+                                        </form>
+
                                         <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="edit">Edit</button>
-                                        <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="delete">Delete</button>
                                     </li>
                                 <?php else : ?>
                                     <li><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></li>
