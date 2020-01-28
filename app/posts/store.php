@@ -30,13 +30,31 @@ if (isset($_FILES['file'], $_POST['caption'])) {
     ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-
     $newPost = $pdo->prepare('INSERT INTO posts (user_id, image, caption) VALUES(:id, :image, :caption)');
     $newPost->execute([
         ':id' => $user['id'],
         ':image' => $filename,
-        ':caption' => $caption
+        ':caption' => $caption,
     ]);
+
+
+    $statement = $pdo->prepare('SELECT image, posts.id FROM posts WHERE user_id = :id AND image = :image');
+    $statement->execute([
+        ':id' => $user['id'],
+        ':image' => $filename
+    ]);
+
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+    // adds a seperate entry for every tag in a post caption so you can search for any tag
+    $tags = checkHashtags($caption);
+    foreach ($tags as $tag) {
+        $newPost = $pdo->prepare('INSERT INTO tags (post_id, tag, user_id) VALUES(:id, :tag, :userid)');
+        $newPost->execute([
+            ':id' => $post['id'],
+            ':tag' => $tag,
+            ':userid' => $_SESSION['user']['id']
+        ]);
+    }
 } else {
     redirect('/newpost.php');
 }

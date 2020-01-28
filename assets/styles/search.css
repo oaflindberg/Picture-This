@@ -1,0 +1,21 @@
+.search-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.search-form {
+    margin: 10px 40px;
+}
+
+.search-wrapper .search-title {
+    color: white;
+    margin: 10px 0;
+}
+
+.white {
+    color: white;
+}

@@ -2,22 +2,22 @@
 
 declare(strict_types=1); ?>
 <img class="background-image" src="assets/images/abstract-2.jpeg" alt="abstract image">
-<?php require __DIR__ . '/views/header.php'; ?>
+<?php require __DIR__ . '/views/header.php';
 
-
-<?php if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     redirect('/');
-} ?>
+}
 
-<?php
-
-$statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :id AND id = :postid');
+$statement = $pdo->prepare('SELECT * FROM posts WHERE id = :postid');
 $statement->execute([
-    ':id' => $_SESSION['user']['id'],
     ':postid' => $_GET['id']
 ]);
 
-$editPosts = $statement->fetch(PDO::FETCH_ASSOC);;
+$editPosts = $statement->fetch(PDO::FETCH_ASSOC);
+
+if ($_SESSION['user']['id'] !== $editPosts['user_id']) {
+    redirect('/');
+}
 ?>
 
 <div class="edit-posts-container">
