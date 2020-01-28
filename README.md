@@ -9,6 +9,7 @@ Assignment in programming class @ Yrgo.
 -   [Preview](#Preview)
 -   [Tested by](#Tested-by)
 -   [Code review](#Code-review)
+-   [Pull requests](#Pull-requests)
 
 ## Assignment instructions
 
@@ -56,6 +57,10 @@ Assignment in programming class @ Yrgo.
 - It's currently possible to update avatar without actually adding a file. 
 
 Code review by [Betsy Alva Soplin](#https://github.com/milliebase)
+
+## Pull requests
+
+- https://github.com/oaflindberg/Picture-This/pull/1
 
 ## Picture That updater
 DEV: [Oskar Turesson](!https://github.com/Cleanly1)
