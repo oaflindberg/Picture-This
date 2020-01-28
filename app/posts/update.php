@@ -30,6 +30,7 @@ if (isset($_POST['editcaption'])) {
     ]);
 
     $tags = checkHashtags($editcaption);
+    // adds a seperate entry for every tag in a post caption so you can search for any tag
     foreach ($tags as $tag) {
         $newPost = $pdo->prepare('INSERT INTO tags (post_id, tag) VALUES(:id, :tag)');
         $newPost->execute([

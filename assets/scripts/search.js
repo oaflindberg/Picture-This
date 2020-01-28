@@ -25,8 +25,7 @@ searchFormUsers.addEventListener("submit", function() {
                 return response.json();
             })
             .then(function(users) {
-                console.log(users);
-                users.forEach(function(user) {
+                users.forEach(user => {
                     if (user["error"] === 404) {
                         const listItem = `<h1>We couldn't find any users</h1>`;
                         userList.innerHTML += listItem;
@@ -72,7 +71,7 @@ searchFormTags.addEventListener("submit", function() {
                 return response.json();
             })
             .then(function(posts) {
-                posts.forEach(function(post) {
+                posts.forEach(post => {
                     if (post["error"] === 404) {
                         const listItem = `<h1>We couldn't find any post</h1>`;
                         postList.innerHTML += listItem;

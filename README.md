@@ -60,5 +60,14 @@ Code review by [Betsy Alva Soplin](#https://github.com/milliebase)
 ## Picture That updater
 DEV: [Oskar Turesson](!https://github.com/Cleanly1)
 
+Features that have been built in by updater:
+
 - As a user I should be able to follow and unfollow other users and see their feeds.
+
+- As a user I should be able to search for another user.
+
+- As a user I should be able to search for a post with a specific tag.
+
+- As a user I should be able to view another users profile with posts.
+
 

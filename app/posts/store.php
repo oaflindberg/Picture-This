@@ -45,7 +45,7 @@ if (isset($_FILES['file'], $_POST['caption'])) {
     ]);
 
     $post = $statement->fetch(PDO::FETCH_ASSOC);
-
+    // adds a seperate entry for every tag in a post caption so you can search for any tag
     $tags = checkHashtags($caption);
     foreach ($tags as $tag) {
         $newPost = $pdo->prepare('INSERT INTO tags (post_id, tag, user_id) VALUES(:id, :tag, :userid)');

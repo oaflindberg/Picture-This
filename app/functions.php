@@ -204,8 +204,13 @@ if (!function_exists('sortsArrays')) {
 }
 
 if (!function_exists('checkHashtags')) {
-
-    function checkHashtags($caption): array
+    /**
+     * checks for hashtags in a text and collects them in an array
+     *
+     * @param string $caption
+     * @return array
+     */
+    function checkHashtags(string $caption): array
     {
         $tags = [];
         $captionWords = explode(' ', $caption);
