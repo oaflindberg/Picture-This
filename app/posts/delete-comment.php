@@ -10,7 +10,6 @@ if (!isset($_SESSION['user'])) {
 header('Content-Type: application/json');
 if (isset($_POST['commentid'])) {
     $commentid = filter_var($_POST['commentid'], FILTER_SANITIZE_NUMBER_INT);
-
     if ($commentid === '') {
         echo json_encode('false');
     } else {

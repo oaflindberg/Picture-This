@@ -10,3 +10,12 @@
 .search-form {
     margin: 10px 40px;
 }
+
+.search-wrapper .search-title {
+    color: white;
+    margin: 10px 0;
+}
+
+.white {
+    color: white;
+}

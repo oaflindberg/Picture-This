@@ -55,7 +55,7 @@
 
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
 
-                        <ul>
+                        <ul class="comments">
                             <?php foreach (getComments($pdo, $post['id']) as $comment) : ?>
                                 <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
                                     <li>
@@ -105,8 +105,8 @@
 
 <script src="assets/scripts/toggle.js"></script>
 <script src="assets/scripts/like.js"></script>
-<script src="assets/scripts/comment.js"></script>
 <script src="assets/scripts/edit-comment.js"></script>
+<script src="assets/scripts/comment.js"></script>
 
 
 <?php require __DIR__ . '/views/footer.php'; ?>

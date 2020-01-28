@@ -98,7 +98,7 @@ if (!function_exists('redirect')) {
 
     function getFeed($pdo)
     {
-        $getFeed = $pdo->query('SELECT posts.id, posts.user_id, posts.image, posts.caption, users.firstname, users.lastname FROM posts INNER JOIN users ON users.id = posts.user_id ORDER BY posts.id DESC');
+        $getFeed = $pdo->query('SELECT posts.id, posts.user_id, posts.image, posts.caption, users.firstname, users.lastname FROM posts INNER JOIN users ON users.id = posts.user_id GROUP BY posts.caption ORDER BY posts.id DESC');
 
         $feedPosts = $getFeed->fetchAll(PDO::FETCH_ASSOC);
 
@@ -115,7 +115,7 @@ if (!function_exists('redirect')) {
 
     function getPosts($pdo, $userId)
     {
-        $statement = $pdo->prepare('SELECT image, caption, posts.id, firstname, lastname FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id ORDER BY posts.id DESC');
+        $statement = $pdo->prepare('SELECT image, caption, posts.id, firstname, lastname FROM posts INNER JOIN users ON users.id = posts.user_id WHERE user_id = :id GROUP BY posts.caption ORDER BY posts.id DESC');
         $statement->execute([
             ':id' => $userId
         ]);
@@ -179,7 +179,7 @@ if (!function_exists('getUserPosts')) {
      */
     function getUserPosts(object $pdo, int $id): array
     {
-        $statement = $pdo->prepare('SELECT posts.id, posts.user_id, posts.image, posts.caption, users.id as user_id, users.firstname, users.lastname, users.avatar FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE posts.user_id = :id ORDER BY posts.id DESC');
+        $statement = $pdo->prepare('SELECT posts.id, posts.user_id, posts.image, posts.caption, users.id as user_id, users.firstname, users.lastname, users.avatar FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE posts.user_id = :id GROUP BY posts.caption ORDER BY posts.id DESC');
         $statement->execute([
             ':id' => $id
         ]);
@@ -200,5 +200,34 @@ if (!function_exists('sortsArrays')) {
         });
 
         return $array;
+    }
+}
+
+if (!function_exists('checkHashtags')) {
+
+    function checkHashtags($caption): array
+    {
+        $tags = [];
+        $captionWords = explode(' ', $caption);
+        foreach ($captionWords as $word) {
+            if (strpos($word, '#') !== false) {
+                $hashtags = 0;
+                $countHashtags = str_split($word);
+                foreach ($countHashtags as $letter) {
+                    if (strpos($letter, '#') !== false) {
+                        $hashtags++;
+                    }
+                }
+                $tag = explode('#', $word);
+                if ($hashtags !== 1) {
+                    for ($i = 1; $i < $hashtags + 1; $i++) {
+                        $tags[] = $tag[$i];
+                    }
+                } else {
+                    $tags[] = $tag[1];
+                }
+            }
+        }
+        return $tags;
     }
 }

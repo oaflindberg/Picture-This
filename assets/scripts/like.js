@@ -17,7 +17,7 @@ likeForms.forEach(likeForm => {
                 heart.src = `/assets/icons/${json.src}`;
             })
             .catch(error => {
-                console.error("Error:", error);
+                console.error(error);
             });
     });
 });

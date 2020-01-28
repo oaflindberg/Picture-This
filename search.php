@@ -5,12 +5,22 @@
 
 <div class="content-wrapper">
     <div class="search-wrapper">
-        <form class="search-form" action="" method="POST">
+        <h5 class="search-title">Users Search</h5>
+        <form class="search-form-user" action="" method="POST">
             <input type="text" name="search" placeholder="Search for a user...">
             <button class="searchButton" type="submit" name="button">Search</button>
         </form>
 
+
+        <h5 class="search-title">Search for post with a "tag"(#)</h5>
+        <form class="search-form-tag" action="" method="POST">
+            <input type="text" name="search" placeholder="Search for a tag...">
+            <button class="searchButton" type="submit" name="button">Search</button>
+        </form>
         <div class="user-list">
+
+        </div>
+        <div class="post-list">
 
         </div>
     </div>

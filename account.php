@@ -12,7 +12,7 @@ declare(strict_types=1); ?>
 
 <?php if (isset($_GET['id'])) {
     $userId = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-    if ($userId == '') {
+    if (!filter_var($userId, FILTER_VALIDATE_INT)) {
         $userId = $_SESSION['user']['id'];
     }
 } else {
@@ -62,7 +62,7 @@ declare(strict_types=1); ?>
             <?php $posts = getPosts($pdo, $user['id']) ?>
             <?php foreach ($posts as $post) : ?>
                 <div class="posts" data-id="<?php echo $post['id']; ?>">
-                    <a href="editpost.php?id=<?php echo $post['id']; ?>">
+                    <a href="<?php echo $user['id'] === $_SESSION['user']['id'] ? "editpost.php" : "post.php" ?>?id=<?php echo $post['id']; ?>">
                         <?php $image = $post['image']; ?>
                         <?php if (file_exists(__DIR__ . "/uploads/posts/$image")) : ?>
                             <img class="posts-in-account" src="/uploads/posts/<?php echo $post['image']; ?>" alt="<?php echo $post['caption']; ?>">
