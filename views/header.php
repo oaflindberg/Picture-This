@@ -20,6 +20,7 @@ require __DIR__ . '/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/start.css">
     <link rel="stylesheet" href="/assets/styles/account.css">
     <link rel="stylesheet" href="/assets/styles/comment.css">
+    <link rel="stylesheet" href="/assets/styles/search.css">
 
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Lato&display=swap" rel="stylesheet">
 </head>

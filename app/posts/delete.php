@@ -6,10 +6,10 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST)) {
 
-    $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id AND user_id = :user_id');
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :id AND user_id = :userid');
     $statement->execute([
         ':id' => $_GET['id'],
-        ':user_id' => $_SESSION['user']['id']
+        ':userid' => $_SESSION['user']['id']
     ]);
     $postInfo = $statement->fetch(PDO::FETCH_ASSOC);
     $postInfoImage = $postInfo['image'];
@@ -26,6 +26,12 @@ if (isset($_POST)) {
     $statement = $pdo->prepare('DELETE FROM reactions WHERE post_id = :post_id AND user_id = :userid');
     $statement->execute([
         ':post_id' => $_GET['id'],
+        ':userid' => $_SESSION['user']['id']
+    ]);
+
+    $statement = $pdo->prepare('DELETE FROM tags WHERE post_id = :id AND user_id = :userid');
+    $statement->execute([
+        ':id' => $_GET['id'],
         ':userid' => $_SESSION['user']['id']
     ]);
 

@@ -8,7 +8,7 @@
                 <a href="/index.php">Home</a>
             </li>
             <li>
-                <a href="#">Search</a>
+                <a href="/search.php">Search</a>
             </li>
 
             <a class="title" href="#"><?php echo $config['title']; ?></a>

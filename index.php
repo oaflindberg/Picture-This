@@ -3,10 +3,28 @@
 <article>
 
     <?php if (isset($_SESSION['user'])) : ?>
+        <?php
 
+        $posts = [];
+
+        $statement = $pdo->prepare('SELECT users.id, users.firstname, users.lastname, users.avatar FROM users LEFT JOIN follows ON users.id = follows.user_id_followed WHERE follows.user_id_follows = :id');
+        $statement->execute([
+            ':id' => $_SESSION['user']['id']
+        ]);
+
+        foreach (($statement->fetchAll(PDO::FETCH_ASSOC)) as $followed) {
+            foreach (getUserPosts($pdo, intval($followed['id'])) as $followsPost) {
+                $posts[] = $followsPost;
+            }
+        }
+        foreach (getUserPosts($pdo, $_SESSION['user']['id']) as $userPost) {
+            $posts[] = $userPost;
+        }
+        $posts = sortsArrays($posts);
+        ?>
         <div class="content-wrapper">
             <section class="content-feed">
-                <?php foreach (getFeed($pdo) as $post) : ?>
+                <?php foreach ($posts as $post) : ?>
 
                     <?php $statement = $pdo->prepare("SELECT * FROM reactions WHERE user_id = :user_id AND post_id = :post_id");
                     $statement->execute([
@@ -37,9 +55,22 @@
 
                         <p class="post-caption-in-feed"><?php echo $post['caption']; ?></p>
 
-                        <ul>
+                        <ul class="comments">
                             <?php foreach (getComments($pdo, $post['id']) as $comment) : ?>
-                                <li><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></li>
+                                <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
+                                    <li>
+
+                                        <p class="comment"><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></p>
+                                        <form class="delete-form" method="post">
+                                            <input class="hidden" type="hidden" name="commentid" value="<?php echo $comment['id'] ?>">
+                                            <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="delete">Delete</button>
+                                        </form>
+
+                                        <button class="comment-options" data-postId="<?php echo $post['id'] ?>" data-id="<?php echo $comment['id'] ?>" data-type="edit">Edit</button>
+                                    </li>
+                                <?php else : ?>
+                                    <li><?php echo $comment['firstname'] . ' ' . $comment['lastname'] . ': ' . $comment['content'];  ?></li>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
 
@@ -52,6 +83,9 @@
                         </form>
                     </div>
                 <?php endforeach; ?>
+                <?php if (empty($posts)) : ?>
+                    <h1>Post from you and those you follow will show up here</h1>
+                <?php endif; ?>
             </section>
 
         </div>
@@ -71,6 +105,7 @@
 
 <script src="assets/scripts/toggle.js"></script>
 <script src="assets/scripts/like.js"></script>
+<script src="assets/scripts/edit-comment.js"></script>
 <script src="assets/scripts/comment.js"></script>
 
 

@@ -6,10 +6,10 @@ require __DIR__ . '/../autoload.php';
 
 header('Content-Type: application/json');
 
-$like = 'like';
 
 if (isset($_POST['postid'])) {
-    $statement = $pdo->prepare('SELECT * FROM reactions WHERE user_id = :userid AND post_id = :postid');
+    $like = 'like';
+    $statement = $pdo->prepare('SELECT * FROM reactions WHERE reactions.user_id = :userid AND post_id = :postid');
 
     $statement->execute([
         ':userid' => $_SESSION['user']['id'],
@@ -18,11 +18,22 @@ if (isset($_POST['postid'])) {
 
 
 
-    $isLiked = $statement->fetch(pdo::FETCH_ASSOC);
+    $isLiked = $statement->fetch(PDO::FETCH_ASSOC);
 
+    if (!$isLiked) {
 
-    if ($isLiked['user_id'] === $_SESSION['user']['id'] && $isLiked['post_id'] === $_POST['postid']) {
-        $statement = $pdo->prepare('DELETE FROM reactions WHERE user_id = :userid AND post_id = :postid');
+        $statement = $pdo->prepare('INSERT INTO reactions (user_id, post_id, reaction_type) VALUES(:userid, :postid, :types);');
+        $statement->execute([
+            ':userid' => $_SESSION['user']['id'],
+            ':postid' => $_POST['postid'],
+            ':types' => $like,
+        ]);
+
+        $liked = ['src' => 'like.png'];
+
+        echo json_encode($liked);
+    } else {
+        $statement = $pdo->prepare('DELETE FROM reactions WHERE reactions.user_id = :userid AND post_id = :postid');
 
         $statement->execute([
             'userid' => $_SESSION['user']['id'],
@@ -32,20 +43,5 @@ if (isset($_POST['postid'])) {
         $notLiked = ['src' => 'heart.svg'];
 
         echo json_encode($notLiked);
-    }
-
-    if (empty($isLiked)) {
-
-        $statement = $pdo->prepare('INSERT INTO reactions (user_id, post_id, reaction_type) VALUES(:userid, :postid, :like)');
-
-        $statement->execute([
-            ':userid' => $_SESSION['user']['id'],
-            ':postid' => $_POST['postid'],
-            ':like' => $like,
-        ]);
-
-        $liked = ['src' => 'like.png'];
-
-        echo json_encode($liked);
     }
 }
