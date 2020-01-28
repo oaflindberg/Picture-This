@@ -58,7 +58,7 @@ Assignment in programming class @ Yrgo.
 Code review by [Betsy Alva Soplin](#https://github.com/milliebase)
 
 ## Picture That updater
-DEV: [Oskar Turesson](!https://github.com/Cleanly1)
+DEV: [Oskar Turesson](#https://github.com/Cleanly1)
 
 Features that have been built in by updater:
 
