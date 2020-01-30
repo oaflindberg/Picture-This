@@ -4,7 +4,8 @@ function commentOptions(e) {
     const comment = e.path[1].children[0].textContent.split(":")[1];
     const postId = e.target.dataset.postid;
     const commentId = e.target.dataset.id;
-    // edits comments
+
+    //edits comment
     if (e.target.dataset.type === "edit") {
         e.path[1].innerHTML = `
             <form action="app/posts/edit-comment.php" method="post" class="comment-form-edit">
@@ -21,6 +22,8 @@ function commentOptions(e) {
 
         editForm.addEventListener("submit", event => {
             event.preventDefault();
+
+            var formData = new FormData(editForm);
 
             fetch("app/posts/edit-comment.php", {
                 method: "POST",
@@ -60,7 +63,8 @@ function commentOptions(e) {
                 });
         });
     }
-    // deletes comments
+
+    //deletes comment
     if (e.target.dataset.type === "delete") {
         e.preventDefault();
         const deleteForm = e.target.form;
